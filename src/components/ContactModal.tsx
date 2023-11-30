@@ -4,6 +4,8 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { AiOutlineDownCircle } from "react-icons/ai";
 import emailjs from '@emailjs/browser';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 
