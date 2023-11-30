@@ -62,31 +62,7 @@ p {
   font-size: 100%;
 }
 
-nav {
-  display: flex;
-  justify-content: flex-end;
-  font-family: "Jost";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 23px;
-  margin-right: 7rem;
-  width: 100%;
-}
 
-ul {
-  list-style-type: none;
-}
-
-li a {
-  text-decoration: none;
-  margin-left: 2rem;
-  color: #ffffff;
-}
-
-li a:hover {
-  color: #c1bfca;
-}
 
 
 

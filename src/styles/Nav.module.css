@@ -1,13 +1,28 @@
-.nav_ul li a {
-    color: #ffffff;
-    text-decoration: none;
-    cursor: pointer;
-    transition: color 0.3s ease;
+nav {
+  display: flex;
+  justify-content: flex-end;
+  font-family: "Jost";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 23px;
+  margin-right: 7rem;
+  width: 100%;
+}
 
-  }
-  .nav_ul li a:hover {
-    color:#dde1ea;
-  }
+ul {
+  list-style-type: none;
+}
+
+li a {
+  text-decoration: none;
+  margin-left: 2rem;
+  color: #ffffff;
+}
+
+li a:hover {
+  color: #c1bfca;
+}
 
 
   /* break point */
