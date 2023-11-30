@@ -1,0 +1,24 @@
+.nav_ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+
+  }
+  .nav_ul li a:hover {
+    color:#dde1ea;
+  }
+
+
+  /* break point */
+
+  @media screen and (max-width: 900px) {
+    .nav_ul {
+      display: none;
+    }
+
+    .nav_wrapper {
+      padding-right: 2rem;
+      margin-right: 0;
+    }
+  }
