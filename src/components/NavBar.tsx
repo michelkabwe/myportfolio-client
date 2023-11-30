@@ -11,7 +11,7 @@ const NavBar: React.FC = () => {
       <ul className={styles.nav_ul}>
         <li>
           <Link to="/">HOME</Link>
-          <Link to="/Project">PROJECTS</Link>
+          <Link to="/Projects">PROJECTS</Link>
         </li>
       </ul>
     </nav>
