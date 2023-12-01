@@ -4,6 +4,7 @@ import { CategoriesProvider } from './hooks/usePostListContext';
 import Home from './components/Home';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Login from './components/Login';
 import Projects from './pages/Projects';
 import AdminPage from './pages/AdminPage';
 import './App.css'
@@ -26,6 +27,7 @@ const App: React.FC = () => {
             } }/> } />
             <Route path="/Projects" element={<Projects  /> } />
             <Route path="/AdminPage" element={<AdminPage />}/>
+            <Route path="/Login" element={<Login/>} />
           </Routes>
           <Footer/>
 
