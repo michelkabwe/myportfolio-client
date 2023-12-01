@@ -12,6 +12,8 @@ const Projects: React.FC = () => {
 
   const posts = useCategoriesContext();
 
+  console.log(posts,'postss')
+
   const pdfUrl =
     "https://kabwedev.files.wordpress.com/2023/08/michel-kabwe-cv-.pdf";
 

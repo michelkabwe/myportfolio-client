@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Projects from './pages/Projects';
+import AdminPage from './pages/AdminPage';
 import './App.css'
 //import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -24,6 +25,7 @@ const App: React.FC = () => {
               throw new Error('Function not implemented.');
             } }/> } />
             <Route path="/Projects" element={<Projects  /> } />
+            <Route path="/AdminPage" element={<AdminPage />}/>
           </Routes>
           <Footer/>
 
