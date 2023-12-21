@@ -1,0 +1,22 @@
+.postpage_container {
+    height: 100%;
+}
+
+.tab_content {
+    overflow-y: auto;
+}
+
+
+.form_title_area {
+    width: 75%;
+}
+.form_text_area {
+    width: 75%;
+    height: 10rem;
+}
+
+.select_category_wrapper {
+    width: 75%;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
