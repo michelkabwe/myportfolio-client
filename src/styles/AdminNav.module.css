@@ -1,0 +1,40 @@
+
+.admin_nav_container {
+    margin-top: 10rem;
+    width: 100%;
+
+}
+
+.admin_nav_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 22px;
+    /*border: 1px solid #d9d8d8;*/
+    padding: 0.5rem;
+
+}
+.admin_nav_wrapper:hover {
+    cursor: pointer;
+
+}
+
+
+.active {
+    background: red;
+
+}
+
+.nav_item_text {
+    color: #000000;
+    margin-bottom: 0px;
+
+}
+
+.nav_item_icon {
+    margin-right: 2rem;
+}
+
+.activeTab {
+    background: red;
+}
