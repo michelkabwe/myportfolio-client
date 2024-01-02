@@ -9,7 +9,7 @@ interface Category {
     category_id: string;
     content: string;
     title: string;
-    post_img: string;
+    imageUrl: string;
 
 }
 
