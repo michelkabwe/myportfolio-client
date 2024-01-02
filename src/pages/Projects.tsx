@@ -136,13 +136,13 @@ const Projects: React.FC = () => {
                     {projectCategory.map((item, index) => (
                       <div key={index} className={styles.card_col_wrapper}>
                         <div
-                          className={`${styles.card_img_wrapper} ${item.post_img
+                          className={`${styles.card_img_wrapper} ${item.imageUrl
                             ? ""
                             : styles.img_wrapper_noBorder
                             }`}
                         >
-                          {item.post_img && (
-                            <img src={item.post_img} alt="Featured" />
+                          {item.imageUrl && (
+                            <img src={item.imageUrl} alt="Featured" />
                           )}
                         </div>
                         <div className={styles.card_col_right}>
