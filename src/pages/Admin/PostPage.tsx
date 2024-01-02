@@ -2,7 +2,8 @@ import React, { useState, useRef } from 'react'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
-import styles from '../../styles/PostPage.module.css'
+import styles from '../../styles/PostPage.module.css';
+
 
 
 interface FormData {
@@ -16,25 +17,57 @@ const PostPage: React.FC = () => {
   const contentRef = useRef<HTMLTextAreaElement>(null);
   const selectRef = useRef<HTMLSelectElement>(null);
 
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      setSelectedFile(file);
+    }
+  };
+
+
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-
-
-
     try {
+      const formData = new FormData();
+      if (selectedFile) {
+        formData.append('file', selectedFile);
+        console.log(selectedFile);
+        ;
+      }
+
+
+      const response: any = await axios.post('http://localhost:3001/api/upload', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+
+      });
 
       const title = titleRef.current?.value || '';
       const content = contentRef.current?.value || '';
-      const selectedCategory = selectRef.current?.value || ''
+      const selectedCategory = selectRef.current?.value || '';
+      console.log(response.data);
+
+      const imageUrl = response.data.imageUrl;
+
+
+      formData.append('title', title);
+      formData.append('content', content);
+      formData.append('selectedCategory', selectedCategory);
+      formData.append('imageUrl',imageUrl);
+
+
 
       console.log(title, content, selectedCategory)
 
-      const response: any = await axios.post<FormData>('http://localhost:3001/api/posts/', {
-        title, content, selectedCategory
+      await axios.post<FormData>('http://localhost:3001/api/posts/', {
+        title, content, selectedCategory,imageUrl
+
       })
-      console.log(response.data, 'responseee')
 
 
     } catch (error) {
@@ -42,6 +75,8 @@ const PostPage: React.FC = () => {
     }
 
   }
+
+
 
   return (
     <div className={styles.postpage_container}>
@@ -69,10 +104,19 @@ const PostPage: React.FC = () => {
             className={styles.form_text_area}
           />
         </Form.Group>
+        <Form.Group className={styles.file_upload}>
+          <Form.Label>Add image</Form.Label>
+          <Form.Control
+            type='file'
+            onChange={handleFileChange}
+            accept='image'
+          />
+
+        </Form.Group>
         <Form.Control aria-label="Default select example"
           as="select" ref={selectRef}
           className={styles.select_category_wrapper}>
-          <option value="">Select category</option>
+          <option value="">Select post category</option>
           <option value="about">about</option>
           <option value="workexperience">workexperience</option>
           <option value="project">project</option>
@@ -84,5 +128,6 @@ const PostPage: React.FC = () => {
     </div>
   )
 }
+
 
 export default PostPage
