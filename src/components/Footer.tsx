@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
           alt="Github Logo"
           className={styles.social_logos}
         /></a>
-        <FaEnvelope  onClick={openModal} className={styles.contact_icon} fa-lg/>
+        <FaEnvelope  onClick={openModal} className={styles.contact_icon} />
         {showModal && <ContactModal closeModal={openModal}/> }
 
       </div>
