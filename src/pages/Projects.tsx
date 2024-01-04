@@ -10,7 +10,8 @@ const Projects: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState("About"); // Store the active category
   const scrollableRef = useRef(null);
 
-  const posts = useCategoriesContext();
+  const { posts } = useCategoriesContext();
+
 
   console.log(posts,'postss')
 

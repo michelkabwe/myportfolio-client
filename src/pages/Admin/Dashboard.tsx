@@ -7,6 +7,7 @@ import { FaEdit } from "react-icons/fa";
 import Table from 'react-bootstrap/Table';
 import Image from 'react-bootstrap/Image';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 interface Post {
   id: number;
@@ -15,7 +16,7 @@ interface Post {
 }
 
 const Dashboard: React.FC = () => {
-  const { posts, handleDeletePost } = useCategoriesContext();
+  const { posts, handleDeletePost, handlePostClick } = useCategoriesContext();
 
   return (
     <ListGroup as="ul" className={styles.postListContainer}>
@@ -27,8 +28,10 @@ const Dashboard: React.FC = () => {
         </thead>
         <tbody>
           {posts.map((post: Post) => (
-            <tr key={post.id} className={styles.tableRow}>
-              <td><Image src={post.imageUrl} alt="Thumbnail" className={styles.dashboardImg} /></td>
+            <tr key={post.id} className={styles.tableRow} onClick={() => handlePostClick(post.id)}>
+              <td><Link to={`http://localhost:3001/api/posts/${post.id}`}>
+                <Image src={post.imageUrl} alt="Thumbnail" className={styles.dashboardImg} />
+                </Link></td>
               <td className={styles.titleColumn}>{post.title}</td>
               <td className={styles.iconColumn}>
                 <FaEdit />

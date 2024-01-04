@@ -35,7 +35,7 @@ const PostPage: React.FC = () => {
       const formData = new FormData();
       if (selectedFile) {
         formData.append('file', selectedFile);
-        console.log(selectedFile);
+        console.log(selectedFile,'selectedFILEEEE');
         ;
       }
 
@@ -50,7 +50,7 @@ const PostPage: React.FC = () => {
       const title = titleRef.current?.value || '';
       const content = contentRef.current?.value || '';
       const selectedCategory = selectRef.current?.value || '';
-      console.log(response.data);
+      console.log(response.data,'DATAAAAAA');
 
       const imageUrl = response.data.imageUrl;
 
@@ -59,10 +59,6 @@ const PostPage: React.FC = () => {
       formData.append('content', content);
       formData.append('selectedCategory', selectedCategory);
       formData.append('imageUrl',imageUrl);
-
-
-
-      console.log(title, content, selectedCategory)
 
       await axios.post<FormData>('http://localhost:3001/api/posts/', {
         title, content, selectedCategory,imageUrl
@@ -109,7 +105,7 @@ const PostPage: React.FC = () => {
           <Form.Control
             type='file'
             onChange={handleFileChange}
-            accept='image'
+            accept="image/*"
           />
 
         </Form.Group>
@@ -118,6 +114,7 @@ const PostPage: React.FC = () => {
           className={styles.select_category_wrapper}>
           <option value="">Select post category</option>
           <option value="about">about</option>
+          <option value="hero">hero</option>
           <option value="workexperience">workexperience</option>
           <option value="project">project</option>
         </Form.Control>
