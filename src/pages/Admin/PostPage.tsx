@@ -3,81 +3,31 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import styles from '../../styles/PostPage.module.css';
+import { useCategoriesContext } from "../../contexts/usePostProvider/usePostList";
+
 
 
 
 interface FormData {
+  createdPost: {
+    id: string;
+    title: string;
+    content: string;
+    category_id: string;
+    imageUrl: string;
+  };
   title: string;
   content: string;
 }
 
 const PostPage: React.FC = () => {
 
-  const titleRef = useRef<HTMLInputElement>(null);
-  const contentRef = useRef<HTMLTextAreaElement>(null);
-  const selectRef = useRef<HTMLSelectElement>(null);
-
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
-
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      setSelectedFile(file);
-    }
-  };
-
-
-
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    try {
-      const formData = new FormData();
-      if (selectedFile) {
-        formData.append('file', selectedFile);
-        console.log(selectedFile,'selectedFILEEEE');
-        ;
-      }
-
-
-      const response: any = await axios.post('http://localhost:3001/api/upload', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-
-      });
-
-      const title = titleRef.current?.value || '';
-      const content = contentRef.current?.value || '';
-      const selectedCategory = selectRef.current?.value || '';
-      console.log(response.data,'DATAAAAAA');
-
-      const imageUrl = response.data.imageUrl;
-
-
-      formData.append('title', title);
-      formData.append('content', content);
-      formData.append('selectedCategory', selectedCategory);
-      formData.append('imageUrl',imageUrl);
-
-      await axios.post<FormData>('http://localhost:3001/api/posts/', {
-        title, content, selectedCategory,imageUrl
-
-      })
-
-
-    } catch (error) {
-      console.error('Error', error)
-    }
-
-  }
-
-
+  const { titleRef, contentRef, selectRef, handleSubmitPost, handleFileChange } = useCategoriesContext();
 
   return (
     <div className={styles.postpage_container}>
       <h1 style={{ color: 'black' }}>PostPage</h1>
-      <Form onSubmit={handleSubmit} style={{ padding: '5rem', height: '100%' }}>
+      <Form onSubmit={handleSubmitPost} style={{ padding: '5rem', height: '100%' }}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Title</Form.Label>
           <Form.Control
@@ -114,7 +64,7 @@ const PostPage: React.FC = () => {
           className={styles.select_category_wrapper}>
           <option value="">Select post category</option>
           <option value="about">about</option>
-          <option value="hero">hero</option>
+          <option value="hero"></option>
           <option value="workexperience">workexperience</option>
           <option value="project">project</option>
         </Form.Control>
