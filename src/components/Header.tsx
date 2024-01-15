@@ -4,7 +4,14 @@ import styles from "../styles/Header.module.css";
 import NavBar from "./NavBar";
 import NavResponsive from "./NavResponsive";
 
-const Header: React.FC = () => {
+interface Auth {
+    isLoggedIn: boolean;
+    isLoggedOut: boolean;
+    setIsLoggedOut: React.Dispatch<React.SetStateAction<boolean>>
+    setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>
+  }
+
+const Header: React.FC<Auth> = ({isLoggedIn, isLoggedOut, setIsLoggedOut, setIsLoggedIn}) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const location = useLocation();
     const isProjectsPage = location.pathname === '/Projects';
@@ -18,7 +25,7 @@ const Header: React.FC = () => {
                 {" "}
                 <Link to="/">Michel Kabwe</Link>
             </span>
-            <NavBar />
+            <NavBar isLoggedIn={isLoggedIn} isLoggedOut={isLoggedOut} setIsLoggedOut={setIsLoggedOut} setIsLoggedIn={setIsLoggedIn} />
             <NavResponsive isOpen={isOpen} setIsOpen={setIsOpen} />
         </header>
     );

@@ -6,7 +6,11 @@ import styles from '../styles/Login.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 
-const Login: React.FC = () => {
+interface Auth {
+    setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Login: React.FC<Auth> = ({ setIsLoggedIn }) => {
 
     const emailRef = useRef<HTMLInputElement>(null);
     const passwordRef = useRef<HTMLInputElement>(null);
@@ -21,27 +25,22 @@ const Login: React.FC = () => {
 
         try {
             const response = []
-            //const response = await axios.post()
-            const myObject = { email: emailValue, password: passwordValue}
+            const myObject = { email: emailValue, password: passwordValue }
             response.push(myObject);
-            console.log(response,'responseeeee');
+            console.log(response, 'responseeeee');
 
-            if(emailValue && passwordValue){
+            if (emailValue && passwordValue) {
+                setIsLoggedIn(true);
                 navigate('/AdminPage');
             }
 
-        } catch (error){
+        } catch (error) {
             console.log(' Error', error);
         }
 
-        emailRef.current!.value ="";
-        passwordRef.current!.value="";
+        emailRef.current!.value = "";
+        passwordRef.current!.value = "";
     }
-
-
-
-    //noValidate validated={
-
 
     return (
         <div className={styles.form_wrapper}>
@@ -54,7 +53,7 @@ const Login: React.FC = () => {
 
                 <Form.Group controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" required ref={passwordRef}/>
+                    <Form.Control type="password" placeholder="Password" required ref={passwordRef} />
                 </Form.Group>
 
                 <Button variant="primary" type="submit">
