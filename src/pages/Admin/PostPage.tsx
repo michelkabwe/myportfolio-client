@@ -64,7 +64,7 @@ const PostPage: React.FC = () => {
           className={styles.select_category_wrapper}>
           <option value="">Select post category</option>
           <option value="about">about</option>
-          <option value="hero"></option>
+          <option value="hero">hero</option>
           <option value="workexperience">workexperience</option>
           <option value="project">project</option>
         </Form.Control>
