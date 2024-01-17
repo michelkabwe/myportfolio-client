@@ -1,9 +1,13 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "../styles/Projects.module.css";
-import { useCategoriesContext } from "../hooks/usePostListContext";
+import { useCategoriesContext } from "../contexts/usePostProvider/usePostList";
 import LiInLogo from "../assets/LI-In-Bug.png";
 import GitHLogo from "../assets/github-mark.png";
 import he from "he";
+
+
+
 
 
 const Projects: React.FC = () => {
@@ -11,9 +15,12 @@ const Projects: React.FC = () => {
   const scrollableRef = useRef(null);
 
   const { posts } = useCategoriesContext();
+  const navigate = useNavigate();
 
+  const goToPost = (id: number) => {
+    navigate(`/posts/${id}`);
 
-  console.log(posts,'postss')
+  }
 
   const pdfUrl =
     "https://kabwedev.files.wordpress.com/2023/08/michel-kabwe-cv-.pdf";
@@ -112,63 +119,68 @@ const Projects: React.FC = () => {
             onScroll={() => handleScroll()}
             ref={scrollableRef}>
 
-                  {/* About Text */}
-                <div id="About" ref={scrollableRef}>
-                  <div className={styles.card_container}>
-                    {aboutCategory.map((item, index) => (
-                      <div key={index} className={styles.card_col_wrapper}>
-                        <div className={styles.card_col_right}>
-                          <h5 className={styles.card_title}>
-                            {he.decode(item.title.replace(/–/g, "-"))}
-                          </h5>
-                          <div className={styles.text_wrapper}>
-                            <p className={styles.p_about}>
-                              {item.content.replace(/<\/?p>/g, "")}
-                            </p>
-                          </div>
-                        </div>
+            {/* About Text */}
+            <div id="About" ref={scrollableRef}>
+              <div className={styles.card_container}>
+                {aboutCategory.map((item, index) => (
+                  <div key={index} className={styles.card_col_wrapper}>
+                    <div className={styles.card_col_right}>
+                      <h5 className={styles.card_title}>
+                        {he.decode(item.title.replace(/–/g, "-"))}
+                      </h5>
+                      <div className={styles.text_wrapper}>
+                        <p className={styles.p_about}>
+                          {item.content.replace(/<\/?p>/g, "")}
+                        </p>
                       </div>
-                    ))}
+                    </div>
                   </div>
-                </div>
-
-                <div id="Project" className="project" ref={scrollableRef}>
-                  <div className={styles.card_container}>
-                    {projectCategory.map((item, index) => (
-                      <div key={index} className={styles.card_col_wrapper}>
-                        <div
-                          className={`${styles.card_img_wrapper} ${item.imageUrl
-                            ? ""
-                            : styles.img_wrapper_noBorder
-                            }`}
-                        >
-                          {item.imageUrl && (
-                            <img src={item.imageUrl} alt="Featured" />
-                          )}
-                        </div>
-                        <div className={styles.card_col_right}>
-                          <h5 className={styles.card_title}>
-                            {he.decode(item.title.replace(/–/g, "-"))}
-                          </h5>
-                          <div className={styles.text_wrapper}>
-                            <p className={styles.card_p}>
-                              {item.content.replace(/<\/?p>/g, "")}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <h5 className={styles.view_full_resume}>
-                  <a href={pdfUrl} target="_blank" rel="noopener noreferrer">
-                    VIEW FULL RESUMÉ
-                  </a>
-                </h5>
+                ))}
               </div>
             </div>
+
+            <div id="Project" className="project" ref={scrollableRef}>
+              <div className={styles.card_container}>
+                {projectCategory.map((item, index) => (
+                  <div key={index} className={styles.card_col_wrapper}onClick={() => goToPost(item.id)} style={{cursor:'pointer'}}>
+                    <div
+                      className={`${styles.card_img_wrapper} ${item.imageUrl
+                        ? ""
+                        : styles.img_wrapper_noBorder
+                        }`}
+                    >
+                      {item.imageUrl && (
+                        <img src={item.imageUrl} alt="Featured" />
+                      )}
+                    </div>
+                    <div className={styles.card_col_right}>
+                      <h5 className={styles.card_title}>
+                        {he.decode(item.title.replace(/–/g, "-"))}
+                      </h5>
+                      <div className={styles.text_wrapper}>
+                        <p className={styles.card_p}>
+                          {item.content.replace(/<\/?p>/g, "")}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+                <div className={styles.tech_logos}>
+
+                </div>
+
+
+              </div>
+            </div>
+            <h5 className={styles.view_full_resume}>
+              <a href={pdfUrl} target="_blank" rel="noopener noreferrer">
+                VIEW FULL RESUMÉ
+              </a>
+            </h5>
           </div>
         </div>
+      </div>
+    </div>
 
 
   );
