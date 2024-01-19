@@ -31,6 +31,8 @@ const Login: React.FC<Auth> = ({ setIsLoggedIn }) => {
 
             if (emailValue && passwordValue) {
                 setIsLoggedIn(true);
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.getItem('isLoggedIn');
                 navigate('/AdminPage');
             }
 

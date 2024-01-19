@@ -22,6 +22,7 @@ const NavBar: React.FC<Auth> = ({ isLoggedIn, setIsLoggedOut, setIsLoggedIn }) =
 
   const handleAuth = () => {
     console.log("Logged OUT")
+    localStorage.removeItem('isLoggedIn');
     setIsLoggedOut(true);
     setIsLoggedIn(false);
     setTimeout(() => {
