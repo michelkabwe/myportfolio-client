@@ -1,34 +1,47 @@
 /* Post.module.css */
 
-/* Styles for the post container */
 .postContainer {
-    height: 100vw;
-    margin: 20px;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  min-height: 200px; /* Set a minimum height as needed */
+  margin: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
 
-  /* Styles for the post title */
-  .postTitle {
-    color: red;
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
+}
 
-  /* Styles for the post content */
-  .postContent {
-    font-size: 16px;
-    line-height: 1.5;
-  }
+.textWrapper {
+  margin-top: 5rem;
+}
 
-  /* Styles for the post image */
-  .postImage {
-    max-width: 50%;
-    height: 50%;
-    margin-top: 10px;
+.postTitle {
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+.postContent {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-top: 1rem;
+  margin-bottom: 6rem;
+  color: #747474;
+}
+
+.postImgWrapper {
+  width: 100%;
+}
+
+.postImage {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin-top: 10px;
+}
+
+@media screen and (min-width: 900px) {
+  .postContainer {
+    margin: 20px auto;
   }
+}

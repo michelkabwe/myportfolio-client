@@ -47,7 +47,7 @@ const Post: React.FC<Post> = () => {
         post.map((item: Post) => (
           <div className={styles.postContainer} key={item.id}>
             <div className={styles.textWrapper}>
-            <h2 className={styles.postTitle} onClick={ () => goToPost(item.id)}>{item.title}</h2>
+            <h1 className={styles.postTitle} onClick={ () => goToPost(item.id)}>{item.title}</h1>
             <div className={styles.postImgWrapper}>
             {item.imageUrl && <img src={item.imageUrl} alt="Post" className={styles.postImage} />}
             </div>
