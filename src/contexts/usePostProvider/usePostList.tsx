@@ -12,6 +12,9 @@ interface Category {
     content: string;
     title: string;
     imageUrl: string;
+    urlsRef:string;
+    liveUrl:string;
+    sourceCode:string;
 }
 
 interface ContextValue {
@@ -24,9 +27,11 @@ interface ContextValue {
     titleRef: React.MutableRefObject<HTMLInputElement | null>;
     contentRef: React.MutableRefObject<HTMLTextAreaElement | null>;
     selectRef: React.MutableRefObject<HTMLSelectElement | null>;
-    //updatePosts: (newPost: Category) => void;
-
+    liveUrlRef: React.MutableRefObject<HTMLInputElement | null>;
+    sourceCodeRef:React.MutableRefObject<HTMLInputElement | null>;
 }
+
+
 
 const CategoriesContext = createContext<ContextValue | undefined>(undefined);
 
@@ -40,14 +45,6 @@ export const useCategoriesContext = (): ContextValue => {
 
 export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children }) => {
     const [posts, setPosts] = useState<Category[]>([]);
-
-    /*const updatePosts = (newPost: Category) =>  {
-        setPosts(prevPosts => [newPost, ...prevPosts]);
-
-    };*/
-
-
-
 
     const handlePostClick = (id: number) => {
         return `http://localhost:3001/api/posts/${id}`
@@ -72,77 +69,78 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      const file = event.target.files?.[0];
-      if (file) {
-        setSelectedFile(file);
-      }
+        const file = event.target.files?.[0];
+        if (file) {
+            setSelectedFile(file);
+        }
     };
-
-
 
     const titleRef = useRef<HTMLInputElement>(null);
     const contentRef = useRef<HTMLTextAreaElement>(null);
     const selectRef = useRef<HTMLSelectElement>(null);
+    const liveUrlRef = useRef<HTMLInputElement>(null);
+    const sourceCodeRef = useRef<HTMLInputElement>(null);
 
 
 
     const handleSubmitPost = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
+
         try {
-          const formData = new FormData();
-          if (selectedFile) {
-            formData.append('file', selectedFile);
-            console.log(selectedFile,'selectedFILEEEE');
-            ;
-          }
+            const formData = new FormData();
+            if (selectedFile) {
+                formData.append('file', selectedFile);
+                console.log(selectedFile, 'selectedFILEEEE');
+                ;
+            }
+
+            const response: any = await axios.post('http://localhost:3001/api/upload', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+
+            });
+
+            const title = titleRef.current?.value || '';
+            const content = contentRef.current?.value || '';
+            const selectedCategory = selectRef.current?.value || '';
+            const liveUrl = liveUrlRef.current?.value || '';
+            const sourceCode = sourceCodeRef.current?.value ||'';
+
+            const imageUrl = response.data.imageUrl;
+
+            formData.append('title', title);
+            formData.append('content', content);
+            formData.append('selectedCategory', selectedCategory);
+            formData.append('imageUrl', imageUrl);
+            formData.append('liveUrl', liveUrl);
+            formData.append('sourceCode', sourceCode);
 
 
-          const response: any = await axios.post('http://localhost:3001/api/upload', formData, {
-            headers: {
-              'Content-Type': 'multipart/form-data',
-            },
+            const res = await axios.post<FormData>('http://localhost:3001/api/posts/', {
+                title, content, selectedCategory, imageUrl, liveUrl, sourceCode
 
-          });
-
-          const title = titleRef.current?.value || '';
-          const content = contentRef.current?.value || '';
-          const selectedCategory = selectRef.current?.value || '';
-          console.log(response.data,'DATAAAAAA');
-
-          const imageUrl = response.data.imageUrl;
-
-          formData.append('title', title);
-          formData.append('content', content);
-          formData.append('selectedCategory', selectedCategory);
-          formData.append('imageUrl',imageUrl);
-
-          const res = await axios.post<FormData>('http://localhost:3001/api/posts/', {
-            title, content, selectedCategory,imageUrl
-
-          })
+            })
 
         } catch (error) {
-          console.error('Error', error)
+            console.error('Error', error)
         }
+    }
 
-      }
 
 
     const handleUpdatePost = async (id: number, updatedData: Partial<Category>) => {
         try {
             const response = await axios.put(`http://localhost:3001/api/posts/${id}`, updatedData);
-
-            // Update the posts state with the edited post
             setPosts(prevPosts =>
                 prevPosts.map(post => (post.id === id ? { ...post, ...updatedData } : post))
             );
 
-            // Return the response or do further handling if needed
             return response;
         } catch (error) {
             console.error('Error updating post:', error);
-            throw error; // Rethrow the error to handle it in the component
+            throw error;
         }
     };
 
@@ -166,9 +164,9 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
         handleFileChange,
         titleRef,
         contentRef,
-        selectRef
-
-
+        selectRef,
+        liveUrlRef,
+        sourceCodeRef
     };
 
     return (

@@ -26,10 +26,7 @@
   }
 
   .portfolio_col_two {
-    /*max-height: calc(100vh - 8rem);
-    overflow-y: auto;*/
     margin-left: 18rem;
-
   }
 
 
@@ -138,8 +135,6 @@
 
 
   .col_two_grid {
-    /*overflow-y: auto;
-    overflow-x: hidden;*/
     max-height: 100vh;
     display: flex;
   }
@@ -148,8 +143,6 @@
     display: flex;
     justify-content: flex-end;
     padding-right: 1rem;
-
-
   }
 
   .date_title {
@@ -177,7 +170,6 @@
     margin-right: 0.5rem;
     margin-bottom: 0.5rem;
     margin-top: 0.5rem;
-     /*border-radius: 10px;*/
     background: #000000;
     color: #ffffff;
     width: 25%;
@@ -219,8 +211,7 @@
 
   .p_about {
     font-size: 18px;
-    max-width: 500px; /* Adjust the value as needed to make the paragraph slimmer */
-     /* Center the paragraph horizontally within the container */
+    max-width: 500px;
   }
 
   .social_btn_wrapper {
@@ -236,11 +227,41 @@
     padding-right: 10px;
   }
 
+  .links_wrapper {
+    display: flex;
+
+  }
+
+  .live_url, .source_code {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+    width: 130px;
+    padding: 0.5rem;
+    border-radius: 11px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 23px;
+    border: solid 1px #FCF55F;
+    color: #FCF55F;
+
+  }
+
+  .live_url a, .source_code a {
+    text-decoration: none;
+
+  }
+  .live_url:hover, .source_code:hover{
+    background:#FCF55F ;
+    color: #000000;
+    transition: 0.5s;
+  }
+
 
 
   /* break points */
-
-
   @media screen and (max-width: 1260px) {
 
     .portfolio_col_two {
@@ -272,8 +293,6 @@
       width: 100%;
       padding-left: 2rem;
       padding-right: 2rem;
-
-
     }
 
     .portfolio_col_one {
@@ -342,7 +361,6 @@
 
   @media (min-width: 768px) {
     .card_col_wrapper:hover {
-      /*box-shadow: 0 0 20px -1px #2e73ff;*/
       background-color: 'red';
       border-radius: 7px;
       transition:  background-color 0.3s ease;

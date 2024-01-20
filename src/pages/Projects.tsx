@@ -7,11 +7,8 @@ import GitHLogo from "../assets/github-mark.png";
 import he from "he";
 
 
-
-
-
 const Projects: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState("About"); // Store the active category
+  const [activeCategory, setActiveCategory] = useState("About");
   const scrollableRef = useRef(null);
 
   const { posts } = useCategoriesContext();
@@ -21,6 +18,7 @@ const Projects: React.FC = () => {
     navigate(`/posts/${id}`);
 
   }
+
 
   const pdfUrl =
     "https://kabwedev.files.wordpress.com/2023/08/michel-kabwe-cv-.pdf";
@@ -45,7 +43,6 @@ const Projects: React.FC = () => {
         const rect = element.getBoundingClientRect();
         const top = rect.top;
         const bottom = rect.bottom;
-
         const threshold = 600;
 
         if (top <= threshold && bottom >= threshold) {
@@ -53,7 +50,6 @@ const Projects: React.FC = () => {
         }
       }
     });
-
   };
 
   useEffect(() => {
@@ -142,7 +138,7 @@ const Projects: React.FC = () => {
             <div id="Project" className="project" ref={scrollableRef}>
               <div className={styles.card_container}>
                 {projectCategory.map((item, index) => (
-                  <div key={index} className={styles.card_col_wrapper}onClick={() => goToPost(item.id)} style={{cursor:'pointer'}}>
+                  <div key={index} className={styles.card_col_wrapper} style={{ cursor: 'pointer' }}>
                     <div
                       className={`${styles.card_img_wrapper} ${item.imageUrl
                         ? ""
@@ -154,7 +150,7 @@ const Projects: React.FC = () => {
                       )}
                     </div>
                     <div className={styles.card_col_right}>
-                      <h5 className={styles.card_title}>
+                      <h5 className={styles.card_title} onClick={() => goToPost(item.id)}>
                         {he.decode(item.title.replace(/–/g, "-"))}
                       </h5>
                       <div className={styles.text_wrapper}>
@@ -162,14 +158,23 @@ const Projects: React.FC = () => {
                           {item.content.replace(/<\/?p>/g, "")}
                         </p>
                       </div>
+                      <div className={styles.links_wrapper}>
+
+
+                        <div className={styles.live_url}>
+                          <a href={item.liveUrl}>See live</a>
+                        </div>
+
+
+                        <div className={styles.source_code}>
+                          <a href={item.sourceCode}>Source code</a>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 ))}
                 <div className={styles.tech_logos}>
-
                 </div>
-
-
               </div>
             </div>
             <h5 className={styles.view_full_resume}>
@@ -181,8 +186,6 @@ const Projects: React.FC = () => {
         </div>
       </div>
     </div>
-
-
   );
 };
 
