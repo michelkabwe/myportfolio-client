@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useCategoriesContext } from '../hooks/usePostListContext';
+import { useCategoriesContext } from '../contexts/usePostProvider/usePostList';
 import styles from '../styles/Home.module.css';
 import LiInLogo from '../assets/LI-In-Bug.png';
 import GitHLogo from '../assets/github-mark.png';
@@ -24,7 +24,7 @@ type HomeComponent = Category & Props
 
 const Home: React.FC<HomeComponent> = () => {
 
-    const posts = useCategoriesContext() || [];
+  const { posts } = useCategoriesContext();
 
     if(posts !== null && posts ! == undefined){
         console.log(posts,'potssss')

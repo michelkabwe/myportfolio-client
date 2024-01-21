@@ -7,14 +7,11 @@ interface Auth {
   setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const LoginPage:React.FC<Auth> = ({setIsLoggedIn}) => {
-
-
-
+const LoginPage: React.FC<Auth> = ({ setIsLoggedIn }) => {
 
   return (
     <div className={styles.loginPageContainer}>
-        <Login setIsLoggedIn={setIsLoggedIn} />
+      <Login setIsLoggedIn={setIsLoggedIn}  />
     </div>
   )
 }
