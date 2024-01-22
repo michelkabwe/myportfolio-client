@@ -83,7 +83,7 @@ const Home: React.FC<HomeComponent> = () => {
           </div>
         )}
         <div className={styles.btn_wrapper_hero}>
-          <Link to="Project">
+          <Link to="Projects">
             <button className={styles.purple_btn}>
               <p className={styles.btn_p}>READ MORE</p><FaChevronRight />
             </button>
