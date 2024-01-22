@@ -45,7 +45,7 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
     const [posts, setPosts] = useState<Category[]>([]);
 
     const handlePostClick = (id: number) => {
-        return `http://localhost:3001/api/posts/${id}`
+        return `http://myportfolio-backend-ten.vercel.app/api/posts/${id}`
     };
 
     const fetchPosts = async () => {
@@ -91,7 +91,7 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
                 formData.append('file', selectedFile);
             }
 
-            const response: any = await axios.post('http://localhost:3001/api/upload', formData, {
+            const response: any = await axios.post('http://myportfolio-backend-ten.vercel.app/api/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -114,7 +114,7 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
             formData.append('sourceCode', sourceCode);
 
 
-            const res = await axios.post<FormData>('http://localhost:3001/api/posts/', {
+            const res = await axios.post<FormData>('http://myportfolio-backend-ten.vercel.app/api/posts/', {
                 title, content, selectedCategory, imageUrl, liveUrl, sourceCode
 
             })
@@ -128,7 +128,7 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
 
     const handleUpdatePost = async (id: number, updatedData: Partial<Category>) => {
         try {
-            const response = await axios.put(`http://localhost:3001/api/posts/${id}`, updatedData);
+            const response = await axios.put(`http://myportfolio-backend-ten.vercel.app/api/posts/${id}`, updatedData);
             setPosts(prevPosts =>
                 prevPosts.map(post => (post.id === id ? { ...post, ...updatedData } : post))
             );
@@ -143,7 +143,7 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
 
     const handleDeletePost = async (id: number) => {
         try {
-            await axios.delete(`http://localhost:3001/api/posts/${id}`);
+            await axios.delete(`http://myportfolio-backend-ten.vercel.app/api/posts/${id}`);
             const updatedPosts = posts.filter(post => post.id !== id);
             setPosts(updatedPosts);
         } catch (error) {
