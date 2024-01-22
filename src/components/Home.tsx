@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useCategoriesContext } from '../hooks/usePostListContext';
+import { useCategoriesContext } from '../contexts/usePostProvider/usePostList';
 import styles from '../styles/Home.module.css';
 import LiInLogo from '../assets/LI-In-Bug.png';
 import GitHLogo from '../assets/github-mark.png';
@@ -24,10 +24,10 @@ type HomeComponent = Category & Props
 
 const Home: React.FC<HomeComponent> = () => {
 
-    const posts = useCategoriesContext() || [];
+  const { posts } = useCategoriesContext();
 
     if(posts !== null && posts ! == undefined){
-        console.log(posts,'potssss')
+        console.log(posts);
       }
 
 
@@ -62,9 +62,6 @@ const Home: React.FC<HomeComponent> = () => {
         return <div>Loading...</div>; // Or handle the loading state
       }
 
-
-
-
   return (
     <div className={styles.home_container}>
     <div className={styles.starCluster}>{createStars()}</div>
@@ -86,7 +83,7 @@ const Home: React.FC<HomeComponent> = () => {
           </div>
         )}
         <div className={styles.btn_wrapper_hero}>
-          <Link to="Project">
+          <Link to="Projects">
             <button className={styles.purple_btn}>
               <p className={styles.btn_p}>READ MORE</p><FaChevronRight />
             </button>
@@ -104,8 +101,6 @@ const Home: React.FC<HomeComponent> = () => {
       </div>
     </div>
   </div>
-
-
   )
 }
 

@@ -31,7 +31,7 @@ const App: React.FC = () => {
             <Route path="/Projects" element={<Projects />} />
             <Route path="/AdminPage" element={<AdminPage />} />
             <Route path="/LoginPage" element={<LoginPage setIsLoggedIn={setIsLoggedIn} />} />
-            <Route path="/posts/:id" element={<Post />} />
+            <Route path="/posts/:id" element={<Post title={''} content={''} item={''} id={''} />} />
 
           </Routes>
           <Footer />
@@ -43,4 +43,3 @@ const App: React.FC = () => {
 }
 
 export default App
-

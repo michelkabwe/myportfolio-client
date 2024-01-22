@@ -13,7 +13,6 @@ interface Post {
   imageUrl?: string;
   item: string;
   id:string;
-  //goToPost: (id: string) => void;
 }
 
 const Post: React.FC<Post> = () => {
@@ -32,7 +31,7 @@ const Post: React.FC<Post> = () => {
     const fetchPost = async () => {
       try {
         const response = await axios.get(`http://localhost:3001/api/posts/${id}`);
-        setPost([response.data]); // Wrap response.data in an array or handle if it's already an array
+        setPost([response.data]);
       } catch (error) {
         console.error('Error fetching post:', error);
       }
