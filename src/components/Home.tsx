@@ -27,7 +27,7 @@ const Home: React.FC<HomeComponent> = () => {
   const { posts } = useCategoriesContext();
 
     if(posts !== null && posts ! == undefined){
-        return posts;
+        console.log(posts);
       }
 
 
