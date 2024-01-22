@@ -1,7 +1,6 @@
-import React, { Dispatch, useState } from 'react'
+import React from 'react'
 import { FaHouseUser } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
-import PostPage  from './PostPage';
 import styles from '../../styles/AdminNav.module.css'
 
 
@@ -12,9 +11,6 @@ interface ActiveTabCategory {
 }
 
 const AdminNav: React.FC<ActiveTabCategory> = ({handleActiveTab, activeTab}) => {
-
-
-
     return (
         <div className={styles.admin_nav_container}>
             <div className={styles.admin_nav_wrapper}>

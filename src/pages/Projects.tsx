@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/Projects.module.css";
 import { useCategoriesContext } from "../contexts/usePostProvider/usePostList";

@@ -26,20 +26,12 @@ interface FormData {
 
 interface TechIcon {
   value: string;
-  component?: React.ReactNode; // or React.ElementType if it's a component type
-
-  //component: JSX.Element;
+  component?: React.ReactNode;
 }
 
-const PostPage: React.FC<TechIcon> = ({ value, component }) => {
+const PostPage: React.FC<TechIcon> = () => {
 
   const { titleRef, contentRef, selectRef, sourceCodeRef, liveUrlRef, handleSubmitPost, handleFileChange } = useCategoriesContext();
-
-  const [addedIconsList, setAddedIconsList] = useState<JSX.Element[]>([]);
-
-  const [selectedIcon, setSelectedIcon] = useState<TechIcon | null>(null);
-
-
 
   const techIcons: TechIcon[] = [
     { value: 'node', component: <FaNode /> },
@@ -51,12 +43,6 @@ const PostPage: React.FC<TechIcon> = ({ value, component }) => {
     { value: 'github', component: <FaGithub /> },
   ];
 
-
-  /*const addIcon = (iconItem:string ) => {
-    const iconsList = [...addedIconsList];
-    iconsList.push(iconItem);
-    setAddedIconsList(iconsList);
-  };*/
   return (
     <div className={styles.postpage_container}>
       <h1 style={{ color: 'black' }}>PostPage</h1>

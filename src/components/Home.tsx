@@ -27,7 +27,7 @@ const Home: React.FC<HomeComponent> = () => {
   const { posts } = useCategoriesContext();
 
     if(posts !== null && posts ! == undefined){
-        console.log(posts,'potssss')
+        return posts;
       }
 
 
@@ -61,9 +61,6 @@ const Home: React.FC<HomeComponent> = () => {
       if (!posts || posts.length === 0) {
         return <div>Loading...</div>; // Or handle the loading state
       }
-
-
-
 
   return (
     <div className={styles.home_container}>
@@ -104,8 +101,6 @@ const Home: React.FC<HomeComponent> = () => {
       </div>
     </div>
   </div>
-
-
   )
 }
 

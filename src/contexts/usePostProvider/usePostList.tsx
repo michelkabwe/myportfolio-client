@@ -12,9 +12,9 @@ interface Category {
     content: string;
     title: string;
     imageUrl: string;
-    urlsRef:string;
-    liveUrl:string;
-    sourceCode:string;
+    urlsRef: string;
+    liveUrl: string;
+    sourceCode: string;
 }
 
 interface ContextValue {
@@ -28,10 +28,8 @@ interface ContextValue {
     contentRef: React.MutableRefObject<HTMLTextAreaElement | null>;
     selectRef: React.MutableRefObject<HTMLSelectElement | null>;
     liveUrlRef: React.MutableRefObject<HTMLInputElement | null>;
-    sourceCodeRef:React.MutableRefObject<HTMLInputElement | null>;
+    sourceCodeRef: React.MutableRefObject<HTMLInputElement | null>;
 }
-
-
 
 const CategoriesContext = createContext<ContextValue | undefined>(undefined);
 
@@ -91,8 +89,6 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
             const formData = new FormData();
             if (selectedFile) {
                 formData.append('file', selectedFile);
-                console.log(selectedFile, 'selectedFILEEEE');
-                ;
             }
 
             const response: any = await axios.post('http://localhost:3001/api/upload', formData, {
@@ -106,7 +102,7 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
             const content = contentRef.current?.value || '';
             const selectedCategory = selectRef.current?.value || '';
             const liveUrl = liveUrlRef.current?.value || '';
-            const sourceCode = sourceCodeRef.current?.value ||'';
+            const sourceCode = sourceCodeRef.current?.value || '';
 
             const imageUrl = response.data.imageUrl;
 

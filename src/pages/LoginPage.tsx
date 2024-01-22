@@ -1,7 +1,6 @@
 import React from 'react'
 import Login from '../components/Login';
 import styles from '../styles/LoginPage.module.css';
-import { SetStateAction } from 'react';
 
 interface Auth {
   setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;

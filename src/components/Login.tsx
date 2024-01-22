@@ -1,10 +1,9 @@
-import React, { useState, useRef, FormEvent } from 'react'
+import React, { useRef, FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import styles from '../styles/Login.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import axios from 'axios';
 
 interface Auth {
     setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
@@ -27,7 +26,6 @@ const Login: React.FC<Auth> = ({ setIsLoggedIn }) => {
             const response = []
             const myObject = { email: emailValue, password: passwordValue }
             response.push(myObject);
-            console.log(response, 'responseeeee');
 
             if (emailValue && passwordValue) {
                 setIsLoggedIn(true);
@@ -62,10 +60,6 @@ const Login: React.FC<Auth> = ({ setIsLoggedIn }) => {
                     Submit
                 </Button>
             </Form>
-
-
-
-
         </div>
     )
 }
