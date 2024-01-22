@@ -12,9 +12,9 @@ interface Category {
     content: string;
     title: string;
     imageUrl: string;
-    urlsRef: string;
-    liveUrl: string;
-    sourceCode: string;
+    urlsRef:string;
+    liveUrl:string;
+    sourceCode:string;
 }
 
 interface ContextValue {
@@ -28,8 +28,10 @@ interface ContextValue {
     contentRef: React.MutableRefObject<HTMLTextAreaElement | null>;
     selectRef: React.MutableRefObject<HTMLSelectElement | null>;
     liveUrlRef: React.MutableRefObject<HTMLInputElement | null>;
-    sourceCodeRef: React.MutableRefObject<HTMLInputElement | null>;
+    sourceCodeRef:React.MutableRefObject<HTMLInputElement | null>;
 }
+
+
 
 const CategoriesContext = createContext<ContextValue | undefined>(undefined);
 
@@ -45,11 +47,12 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
     const [posts, setPosts] = useState<Category[]>([]);
 
     const handlePostClick = (id: number) => {
-        return `http://frontend-ovlkhg7sy-michelkabwe.vercel.app/api/posts/${id}`
+        return `http://myportfolio-backend-ten.vercel.app/api/posts/${id}`
     };
+
     const fetchPosts = async () => {
         try {
-            const response = await axios.get<Category[]>('https://frontend-ovlkhg7sy-michelkabwe.vercel.app/api/posts/');
+            const response = await axios.get<Category[]>('http://myportfolio-backend-ten.vercel.app/api/posts/');
             setPosts(response.data);
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -88,9 +91,10 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
             const formData = new FormData();
             if (selectedFile) {
                 formData.append('file', selectedFile);
+                ;
             }
 
-            const response: any = await axios.post('http://frontend-ovlkhg7sy-michelkabwe.vercel.app/api/upload', formData, {
+            const response: any = await axios.post('http://myportfolio-backend-ten.vercel.app/api/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -101,7 +105,7 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
             const content = contentRef.current?.value || '';
             const selectedCategory = selectRef.current?.value || '';
             const liveUrl = liveUrlRef.current?.value || '';
-            const sourceCode = sourceCodeRef.current?.value || '';
+            const sourceCode = sourceCodeRef.current?.value ||'';
 
             const imageUrl = response.data.imageUrl;
 
@@ -113,7 +117,7 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
             formData.append('sourceCode', sourceCode);
 
 
-            const res = await axios.post<FormData>('http://frontend-ovlkhg7sy-michelkabwe.vercel.app/api/posts/', {
+            const res = await axios.post<FormData>('http://myportfolio-backend-ten.vercel.app/api/posts/', {
                 title, content, selectedCategory, imageUrl, liveUrl, sourceCode
 
             })
@@ -127,7 +131,7 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
 
     const handleUpdatePost = async (id: number, updatedData: Partial<Category>) => {
         try {
-            const response = await axios.put(`http://frontend-ovlkhg7sy-michelkabwe.vercel.app/api/posts/${id}`, updatedData);
+            const response = await axios.put(`http://myportfolio-backend-ten.vercel.app/api/posts/${id}`, updatedData);
             setPosts(prevPosts =>
                 prevPosts.map(post => (post.id === id ? { ...post, ...updatedData } : post))
             );
@@ -142,7 +146,7 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
 
     const handleDeletePost = async (id: number) => {
         try {
-            await axios.delete(`http://frontend-ovlkhg7sy-michelkabwe.vercel.app/api/posts/${id}`);
+            await axios.delete(`http://myportfolio-backend-ten.vercel.app/api/posts/${id}`);
             const updatedPosts = posts.filter(post => post.id !== id);
             setPosts(updatedPosts);
         } catch (error) {
