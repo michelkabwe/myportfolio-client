@@ -30,7 +30,7 @@ const Post: React.FC<Post> = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await axios.get(`http://myportfolio-backend-ten.vercel.app/api/posts/${id}`);
+        const response = await axios.get(`https://myportfolio-backend-ten.vercel.app/api/posts/${id}`);
         setPost([response.data]);
       } catch (error) {
         console.error('Error fetching post:', error);
