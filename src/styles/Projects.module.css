@@ -251,8 +251,14 @@
 
   .live_url a, .source_code a {
     text-decoration: none;
+    color:#FCF55F;
 
   }
+  .live_url a:hover,  branch.source_code a:hover {
+    text-decoration: none;
+    color:#000000;
+  }
+
   .live_url:hover, .source_code:hover{
     background:#FCF55F ;
     color: #000000;
