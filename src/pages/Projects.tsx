@@ -15,7 +15,7 @@ const Projects: React.FC = () => {
   const navigate = useNavigate();
 
   const goToPost = (id: number) => {
-    navigate(`/posts/${id}`);
+    navigate(`/api/posts/${id}`);
 
   }
 
