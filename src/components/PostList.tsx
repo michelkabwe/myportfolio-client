@@ -23,7 +23,7 @@ const Post: React.FC<PostProps> = ({
 
 
   const goToPost = (id: number) => {
-      navigate(`/posts/${id}`);
+      navigate(`/api/posts/${id}`);
     };
 
 
