@@ -24,7 +24,7 @@ const Post: React.FC<Post> = () => {
 
 
   const goToPost = (postId: string) => {
-    navigate(`/posts/${postId}`);
+    navigate(`/api/posts/${postId}`);
   };
 
   useEffect(() => {
