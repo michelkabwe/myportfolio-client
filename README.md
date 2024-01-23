@@ -1,46 +1,70 @@
-# Getting Started with Create React App
+# Project Overview:
+Title: Full Stack Portfolio with Custom CMS
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Link to backend repository: 
+https://github.com/michelkabwe/myportfolio-backend
 
-## Available Scripts
+# Description:
 
-In the project directory, you can run:
+# Frontend:
 
-### `npm start`
+Framework: React.js with TypeScript
+Styling: Bootstrap
+Features:
+Responsive portfolio showcasing your projects, skills, and achievements.
+Interactive and dynamic user interface with React components.
+TypeScript for enhanced type-checking and code maintainability.
+Backend:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Framework: Node.js
+Database: Google Cloud Firestore
+Features:
+Custom Content Management System (CMS) for managing portfolio content.
+Integration with Google Cloud Firestore for storing dynamic data.
+API endpoints for CRUD operations on portfolio content.
+Deployment:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The frontend and backend are hosted separately for scalability.
+Frontend hosted on a static hosting service like Netlify or Vercel.
+Backend hosted on a serverless environment like Google Cloud Functions or Firebase Functions.
+Key Technologies:
 
-### `npm test`
+React.js (Frontend)
+TypeScript (Frontend)
+Bootstrap (Frontend)
+Node.js (Backend)
+Google Cloud Firestore (Database)
+Google Cloud Functions or Firebase Functions (Backend Serverless Hosting)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Key Features:
 
-### `npm run build`
+# Portfolio Showcase:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Display a collection of projects with detailed information.
+Highlighted skills and technologies used.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Custom CMS:
+Backend CMS to manage portfolio content without code changes.
+Dynamic content updates for projects, skills, and other portfolio sections.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Responsive Design:
+Ensures a seamless user experience across various devices and screen sizes.
+Google Cloud Integration:
 
-### `npm run eject`
+Leveraging Google Cloud Firestore for data storage.
+Integration with Google Cloud Functions or Firebase Functions for serverless backend.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# Interactive UI:
+Engaging user interface with React components and Bootstrap styling.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Development Tools:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Git for version control and collaboration.
+VSCode or preferred code editor for development.
+Firebase CLI or Google Cloud SDK for managing cloud resources.
+Future Enhancements:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Continuous Integration/Continuous Deployment (CI/CD) for automated testing and deployment.
+Authentication system for user-specific features.
+Integration with additional Google Cloud services for enhanced functionality.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
