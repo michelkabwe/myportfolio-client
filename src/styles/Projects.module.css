@@ -229,10 +229,6 @@
 
   .links_wrapper {
     display: flex;
-<<<<<<< HEAD
-=======
-
->>>>>>> 45b21914f79b08c66243d8ede2ea0d119cec72b8
   }
 
   .live_url, .source_code {
@@ -257,11 +253,6 @@
     color:#FCF55F;
 
   }
-<<<<<<< HEAD
-
-  .live_url:hover, .source_code:hover{
-    background:#fcf55f36 ;
-=======
   .live_url a:hover,  branch.source_code a:hover {
     text-decoration: none;
     color:#000000;
@@ -270,7 +261,6 @@
   .live_url:hover, .source_code:hover{
     background:#FCF55F ;
     color: #000000;
->>>>>>> 45b21914f79b08c66243d8ede2ea0d119cec72b8
     transition: 0.5s;
   }
 
@@ -344,14 +334,6 @@
 
     }
 
-<<<<<<< HEAD
-    .card_img_wrapper {
-      margin-top: 8rem;
-      width: 100%;
-    }
-
-=======
->>>>>>> 45b21914f79b08c66243d8ede2ea0d119cec72b8
     .card_img_wrapper img {
       width: 75%;
     }
@@ -371,33 +353,14 @@
     .card_title {
       font-size: 20px;
       margin-top: 2rem;
-<<<<<<< HEAD
-      text-align: center;
-    }
-
-    .card_p {
-      text-align: center;
-=======
->>>>>>> 45b21914f79b08c66243d8ede2ea0d119cec72b8
     }
 
     .card_title_yellow {
       color: #FCF55F;
     }
 
-<<<<<<< HEAD
-    .links_wrapper {
-      display: flex;
-      justify-content: center;
-    }
-
     .view_full_resume {
       margin-bottom: 10rem;
-      text-align: center;
-=======
-    .view_full_resume {
-      margin-bottom: 10rem;
->>>>>>> 45b21914f79b08c66243d8ede2ea0d119cec72b8
     }
   }
 
