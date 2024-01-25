@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 # Frontend:
 Framework: React.js with TypeScript Styling: Bootstrap Features: Responsive portfolio showcasing your projects, skills, and achievements. Interactive and dynamic user interface with React components. TypeScript for enhanced type-checking and code maintainability. Backend:
 
@@ -27,7 +24,7 @@ Leveraging Google Cloud Firestore for data storage. Integration with Google Clou
 # Project Overview:
 Title: Full Stack Portfolio with Custom CMS
 
-Link to backend repository: 
+Link to backend repository:
 https://github.com/michelkabwe/myportfolio-backend
 
 # Description:
@@ -79,10 +76,6 @@ Google Cloud Integration:
 
 Leveraging Google Cloud Firestore for data storage.
 Integration with Google Cloud Functions or Firebase Functions for serverless backend.
-<<<<<<< HEAD
->>>>>>> master
-=======
->>>>>>> 45b21914f79b08c66243d8ede2ea0d119cec72b8
 
 # Interactive UI:
 Engaging user interface with React components and Bootstrap styling.
@@ -93,9 +86,6 @@ Engaging user interface with React components and Bootstrap styling.
 Git for version control and collaboration. VSCode or preferred code editor for development. Firebase CLI or Google Cloud SDK for managing cloud resources. Future Enhancements:
 
 Continuous Integration/Continuous Deployment (CI/CD) for automated testing and deployment. Authentication system for user-specific features. Integration with additional Google Cloud services for enhanced functionality.
-=======
-=======
->>>>>>> 45b21914f79b08c66243d8ede2ea0d119cec72b8
 
 Git for version control and collaboration.
 VSCode or preferred code editor for development.
@@ -105,16 +95,11 @@ Future Enhancements:
 Continuous Integration/Continuous Deployment (CI/CD) for automated testing and deployment.
 Authentication system for user-specific features.
 Integration with additional Google Cloud services for enhanced functionality.
-<<<<<<< HEAD
->>>>>>> master
-=======
->>>>>>> 45b21914f79b08c66243d8ede2ea0d119cec72b8
 
-=======
 # Project Overview:
 Title: Full Stack Portfolio with Custom CMS
 
-Link to backend repository: 
+Link to backend repository:
 https://github.com/michelkabwe/myportfolio-backend
 
 # Description:
@@ -181,4 +166,3 @@ Continuous Integration/Continuous Deployment (CI/CD) for automated testing and d
 Authentication system for user-specific features.
 Integration with additional Google Cloud services for enhanced functionality.
 
->>>>>>> 45b21914f79b08c66243d8ede2ea0d119cec72b8
