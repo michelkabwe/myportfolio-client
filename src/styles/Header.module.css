@@ -1,0 +1,45 @@
+.header {
+  display: flex;
+  align-items: center;
+  background: #000000;
+  position: fixed;
+  z-index: 1;
+  height: 100px;
+  width: 100%;
+}
+
+.header.about {
+position: absolute;
+}
+
+.logo {
+  color: #ffffff;
+  font-family: Futura;
+  font-style: normal;
+  font-size: 36px;
+  line-height: 44px;
+  margin-left: 11rem;
+  width: 31rem;
+  text-transform: uppercase;
+
+}
+
+.logo a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+
+/* break points  */
+
+@media screen and (max-width: 900px) {
+  .logo {
+    padding-left: 2rem;
+    font-size: 1rem;
+    margin-left: 0;
+  }
+
+  .header {
+    position: fixed;
+  }
+}

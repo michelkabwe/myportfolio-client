@@ -1,0 +1,36 @@
+.admin_dashboard_container {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+}
+
+.admin_dashboard_wrapper {
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.admin_dashboard_col_left {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    width: 20%;
+    height: 100%;
+
+}
+
+.admin_dashboard_col_right {
+    background: #fffdfd;
+    width: 80%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.tab_content {
+    height: 100%;
+}

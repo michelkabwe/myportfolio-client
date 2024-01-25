@@ -1,0 +1,24 @@
+.postListContainer {
+  display: flex;
+  justify-content: center;
+  padding: 5rem;
+  height: 100%;
+}
+
+.postWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.deleteIcon {
+  margin-left: 0.5rem;
+}
+
+.dashboardImg {
+  height: 50px;
+  width: 50px;
+}
+
+.tableRow {
+    vertical-align: middle;
+}
