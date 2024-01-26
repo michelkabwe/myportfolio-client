@@ -256,11 +256,12 @@
   }
   .live_url a:hover,  branch.source_code a:hover {
     text-decoration: none;
-    color:#000000;
+    color:#FCF55F;
+
   }
 
   .live_url:hover, .source_code:hover{
-    background:#FCF55F ;
+    background:#fcf55f1f;
     color: #000000;
     transition: 0.5s;
   }
