@@ -12,7 +12,9 @@ interface Post {
   content: string;
   imageUrl?: string;
   item: string;
-  id:string;
+  id: string;
+  sourceCode: string;
+  liveUrl: string;
 }
 
 const Post: React.FC<Post> = () => {
@@ -46,15 +48,26 @@ const Post: React.FC<Post> = () => {
         post.map((item: Post) => (
           <section className={styles.postContainer} key={item.id}>
             <div className={styles.textWrapper}>
-            <h1 className={styles.postTitle} onClick={ () => goToPost(item.id)}>{item.title}</h1>
-            <div className={styles.postContentWrapper}>
-            <div className={styles.postImgWrapper}>
-            {item.imageUrl && <img src={item.imageUrl} alt="Post" className={styles.postImage} />}
-            </div>
-            <div className={styles.postContent}>
-            <p className={styles.postContentP}>{item.content}</p>
-            </div>
-            </div>
+              <div className={styles.postContentWrapper}>
+                <div className={styles.postImgWrapper}>
+                  <div>
+                    <h1 className={styles.postTitle} onClick={() => goToPost(item.id)}>{item.title}</h1>
+                  </div>
+
+                  {item.imageUrl && <img src={item.imageUrl} alt="Post" className={styles.postImage} />}
+                </div>
+                <div className={styles.postContent}>
+                  <p className={styles.postContentP}>{item.content}</p>
+                  <div className={styles.links_wrapper}>
+                    <div className={styles.live_url}>
+                      <a href={item.liveUrl}>See live</a>
+                    </div>
+                    <div className={styles.source_code}>
+                      <a href={item.sourceCode}>Source code</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
           </section>
