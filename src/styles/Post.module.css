@@ -21,7 +21,18 @@
   margin-bottom: 10px;
 }
 
+/* styles.module.css */
+.postContentWrapper {
+  display: flex;
+  height: 500px;
+}
+
 .postContent {
+  flex: 1; /* Takes up 50% of the width */
+  padding: 0 10px; /* Add padding if needed */
+}
+
+.postContentP {
   font-size: 16px;
   line-height: 1.5;
   margin-top: 1rem;
@@ -30,18 +41,26 @@
 }
 
 .postImgWrapper {
-  width: 100%;
+  flex: 1; /* Takes up 50% of the width */
 }
 
 .postImage {
   width: 100%;
-  max-width: 400px;
+  max-width: 100%;
   height: auto;
   margin-top: 10px;
 }
 
-@media screen and (min-width: 900px) {
-  .postContainer {
-    margin: 20px auto;
+
+@media (max-width: 900px) {
+
+  .postContentWrapper {
+    flex-direction: column; /* Stack items in a column */
+    height: auto; /* Adjust the height as needed */
+  }
+
+  .postContent,
+  .postImgWrapper {
+    flex: 100%; /* Take up 100% of the width, stacking on top of each other */
   }
 }

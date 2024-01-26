@@ -44,16 +44,20 @@ const Post: React.FC<Post> = () => {
     <>
       {post.length > 0 ? (
         post.map((item: Post) => (
-          <div className={styles.postContainer} key={item.id}>
+          <section className={styles.postContainer} key={item.id}>
             <div className={styles.textWrapper}>
             <h1 className={styles.postTitle} onClick={ () => goToPost(item.id)}>{item.title}</h1>
+            <div className={styles.postContentWrapper}>
             <div className={styles.postImgWrapper}>
             {item.imageUrl && <img src={item.imageUrl} alt="Post" className={styles.postImage} />}
             </div>
-            <p className={styles.postContent}>{item.content}</p>
+            <div className={styles.postContent}>
+            <p className={styles.postContentP}>{item.content}</p>
+            </div>
+            </div>
             </div>
 
-          </div>
+          </section>
         ))
       ) : (
         <p>Loading...</p>
