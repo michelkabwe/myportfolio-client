@@ -31,7 +31,7 @@ const App: React.FC = () => {
             <Route path="/Projects" element={<Projects />} />
             <Route path="/AdminPage" element={<AdminPage />} />
             <Route path="/LoginPage" element={<LoginPage setIsLoggedIn={setIsLoggedIn} />} />
-            <Route path="/api/posts/:id" element={<Post title={''} content={''} item={''} id={''} />} />
+            <Route path="/api/posts/:id" element={<Post title={''} content={''} item={''} id={''} sourceCode={''} liveUrl={''}/>} />
 
           </Routes>
           <Footer />
@@ -43,4 +43,3 @@ const App: React.FC = () => {
 }
 
 export default App
-
