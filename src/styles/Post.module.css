@@ -40,7 +40,6 @@
   line-height: 1.5;
   margin-top: 1rem;
   margin-bottom: 2rem; /* Adjusted margin for better spacing */
-  color: #c1bfca;
 }
 
 .postImgWrapper {
@@ -95,7 +94,10 @@
 
 @media (max-width: 900px) {
   .postContainer {
-    padding: 1rem;
+    padding-bottom: 7rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 1rem;
   }
 
   .postContentWrapper {
