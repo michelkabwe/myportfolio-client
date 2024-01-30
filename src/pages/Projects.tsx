@@ -19,9 +19,9 @@ const Projects: React.FC = () => {
 
   }
 
-
-  const pdfUrl =
-    "https://kabwedev.files.wordpress.com/2023/08/michel-kabwe-cv-.pdf";
+  //To display pdf
+  /*const pdfUrl =
+    "https://kabwedev.files.wordpress.com/2023/08/michel-kabwe-cv-.pdf";*/
 
   /* Find specific categories */
   const aboutCategory = posts.filter((post) => {
@@ -177,11 +177,11 @@ const Projects: React.FC = () => {
                 </div>
               </div>
             </div>
-            <h5 className={styles.view_full_resume}>
+           {/* <h5 className={styles.view_full_resume}>
               <a href={pdfUrl} target="_blank" rel="noopener noreferrer">
                 VIEW FULL RESUMÉ
-              </a>
-            </h5>
+                      </a>
+            </h5>*/}
           </div>
         </div>
       </div>
