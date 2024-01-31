@@ -12,7 +12,6 @@
   justify-content: center;
   margin-bottom: 3rem;
   width: 100%;
-  height: 100vh;
   }
 
 
@@ -50,7 +49,6 @@
     position: relative;
     padding-left: 110px;
     text-transform: uppercase;
-    font-size: 1.5rem;
   }
 
   .menu_p.active,
@@ -124,8 +122,29 @@
 
   }
 
+  .card_col_right_about {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem;
+
+  }
+
+  .text_wrapper_about {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+  }
+
+
   .card_col_right {
    width: 480px;
+  }
+
+
+  .text_wrapper_about {
+
   }
 
 
@@ -164,8 +183,16 @@
   .card_p {
   font-style: normal;
   line-height: normal;
+  }
+
+  .card_p span:hover {
+    transform: translateX(3px);
+    transition: transform 0.5s ease;
+    cursor: pointer;
 
   }
+
+
 
   .competence_wrapper {
     display: flex;
@@ -268,6 +295,10 @@
   }
   /* break points */
   @media screen and (max-width: 1260px) {
+
+    .portfolio_col_one {
+      display: none;
+    }
 
     .portfolio_col_two {
       margin-left: 0rem;

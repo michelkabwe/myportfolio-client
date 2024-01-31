@@ -78,20 +78,20 @@ const Projects: React.FC = () => {
           <div className={styles.col_one_content}>
 
             <div className={styles.menu_wrapper}>
-              <h5
+              <h6
                 className={`${styles.menu_p} ${activeCategory === "about" ? styles.active : ""
                   }`}
                 onClick={() => scrollToSection("About")}
               >
                 About
-              </h5>
-              <h5
+              </h6>
+              <h6
                 className={`${styles.menu_p} ${activeCategory === "project" ? styles.active : ""
                   }`}
                 onClick={() => scrollToSection("Project")}
               >
                 My projects
-              </h5>
+              </h6>
             </div>
             <img
               src={LiInLogo}
