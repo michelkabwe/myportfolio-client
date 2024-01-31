@@ -18,7 +18,8 @@ Backend CMS to manage portfolio content without code changes. Dynamic content up
 Ensures a seamless user experience across various devices and screen sizes. Google Cloud Integration:
 
 Leveraging Google Cloud Firestore for data storage. Integration with Google Cloud Functions or Firebase Functions for serverless backend.
-
+=======
+=======
 # Project Overview:
 Title: Full Stack Portfolio with Custom CMS
 
@@ -68,6 +69,7 @@ Highlighted skills and technologies used.
 Backend CMS to manage portfolio content without code changes.
 Dynamic content updates for projects, skills, and other portfolio sections.
 
+>>>>>>> portfolio/deploy
 # Responsive Design:
 Ensures a seamless user experience across various devices and screen sizes.
 Google Cloud Integration:
@@ -79,6 +81,11 @@ Integration with Google Cloud Functions or Firebase Functions for serverless bac
 Engaging user interface with React components and Bootstrap styling.
 
 # Development Tools:
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> portfolio/deploy
 Git for version control and collaboration. VSCode or preferred code editor for development. Firebase CLI or Google Cloud SDK for managing cloud resources. Future Enhancements:
 
 Continuous Integration/Continuous Deployment (CI/CD) for automated testing and deployment. Authentication system for user-specific features. Integration with additional Google Cloud services for enhanced functionality.

@@ -91,7 +91,6 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
             const formData = new FormData();
             if (selectedFile) {
                 formData.append('file', selectedFile);
-                console.log(selectedFile, 'selectedFILEEEE');
                 ;
             }
 

@@ -4,9 +4,12 @@ import styles from '../styles/AdminPage.module.css';
 import PostPage from './Admin/PostPage';
 import Dashboard from './Admin/Dashboard';
 
+interface TechIcon {
+  component?: React.ReactNode;
 
+}
 
-const AdminPage: React.FC = () => {
+const AdminPage: React.FC<TechIcon> = () => {
   const [activeTab, setActiveTab] = useState('dashboard')
 
 
@@ -25,7 +28,7 @@ const handleActiveTab = (category:any) => {
           <div className={styles.tab_content}>
           {activeTab === 'dashboard' ? <Dashboard /> : ''}
 
-            {activeTab === 'posts' ? <PostPage /> : ''}
+            {activeTab === 'posts' ? <PostPage value={''} /> : ''}
           </div>
         </div>
 

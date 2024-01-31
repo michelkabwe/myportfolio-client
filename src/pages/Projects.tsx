@@ -1,10 +1,12 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/Projects.module.css";
 import { useCategoriesContext } from "../contexts/usePostProvider/usePostList";
 import LiInLogo from "../assets/LI-In-Bug.png";
 import GitHLogo from "../assets/github-mark.png";
 import he from "he";
+import { MdOutlineArrowOutward } from "react-icons/md";
+
 
 
 const Projects: React.FC = () => {
@@ -19,9 +21,9 @@ const Projects: React.FC = () => {
 
   }
 
-
-  const pdfUrl =
-    "https://kabwedev.files.wordpress.com/2023/08/michel-kabwe-cv-.pdf";
+  //To display pdf
+  /*const pdfUrl =
+    "https://kabwedev.files.wordpress.com/2023/08/michel-kabwe-cv-.pdf";*/
 
   /* Find specific categories */
   const aboutCategory = posts.filter((post) => {
@@ -76,20 +78,20 @@ const Projects: React.FC = () => {
           <div className={styles.col_one_content}>
 
             <div className={styles.menu_wrapper}>
-              <h5
+              <h6
                 className={`${styles.menu_p} ${activeCategory === "about" ? styles.active : ""
                   }`}
                 onClick={() => scrollToSection("About")}
               >
                 About
-              </h5>
-              <h5
+              </h6>
+              <h6
                 className={`${styles.menu_p} ${activeCategory === "project" ? styles.active : ""
                   }`}
                 onClick={() => scrollToSection("Project")}
               >
                 My projects
-              </h5>
+              </h6>
             </div>
             <img
               src={LiInLogo}
@@ -120,11 +122,11 @@ const Projects: React.FC = () => {
               <div className={styles.card_container}>
                 {aboutCategory.map((item, index) => (
                   <div key={index} className={styles.card_col_wrapper}>
-                    <div className={styles.card_col_right}>
+                    <div className={styles.card_col_right_about}>
                       <h5 className={styles.card_title}>
                         {he.decode(item.title.replace(/–/g, "-"))}
                       </h5>
-                      <div className={styles.text_wrapper}>
+                      <div className={styles.text_wrapper_about}>
                         <p className={styles.p_about}>
                           {item.content.replace(/<\/?p>/g, "")}
                         </p>
@@ -138,7 +140,7 @@ const Projects: React.FC = () => {
             <div id="Project" className="project" ref={scrollableRef}>
               <div className={styles.card_container}>
                 {projectCategory.map((item, index) => (
-                  <div key={index} className={styles.card_col_wrapper} style={{ cursor: 'pointer' }}>
+                  <div key={index} className={styles.card_col_wrapper}>
                     <div
                       className={`${styles.card_img_wrapper} ${item.imageUrl
                         ? ""
@@ -155,8 +157,25 @@ const Projects: React.FC = () => {
                       </h5>
                       <div className={styles.text_wrapper}>
                         <p className={styles.card_p}>
-                          {item.content.replace(/<\/?p>/g, "")}
+                          {item.content.length >= 100 ? (
+                            <span>
+                              {item.content.replace(/<\/?p>/g, "")}
+                              <span
+                                style={{ color: '#FCF55F', cursor: 'pointer', display:'block', marginTop:'10px' }}
+                                onClick={() => goToPost(item.id)}
+                              >
+                                Read more <MdOutlineArrowOutward
+                                style={{ color: '#ffffff', marginLeft: '3px' }} />
+                              </span>
+                            </span>
+                          ) : (
+                            <span>
+                              {item.content.replace(/<\/?p>/g, "")}
+                            </span>
+                          )}
                         </p>
+
+
                       </div>
                       <div className={styles.links_wrapper}>
 
@@ -177,11 +196,11 @@ const Projects: React.FC = () => {
                 </div>
               </div>
             </div>
-            <h5 className={styles.view_full_resume}>
+            {/* <h5 className={styles.view_full_resume}>
               <a href={pdfUrl} target="_blank" rel="noopener noreferrer">
                 VIEW FULL RESUMÉ
-              </a>
-            </h5>
+                      </a>
+            </h5>*/}
           </div>
         </div>
       </div>

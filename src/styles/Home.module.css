@@ -3,6 +3,7 @@
     padding-top: 100px;
     overflow-anchor: none;
     position: fixed;
+    width: 100%;
   }
 
   /* UniverseCluster.module.css */
@@ -182,10 +183,6 @@
 
   .social_btn_wrapper_hero {
     display: none;
-  /*
-    display: flex;
-    justify-content: center;
-    align-items: self-end;*/
   }
 
   .social_logos_hero {
@@ -361,7 +358,19 @@
   /* break points */
 
   @media screen and (max-width: 900px) {
-    .section,
+    .section {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-direction: column;
+      padding: 2rem 2rem;
+      margin-left: 0rem;
+      margin-right: 0rem;
+      padding-top: 0;
+      height: 100vh;
+
+    }
+
     .section_techstack {
       display: flex;
       justify-content: center;

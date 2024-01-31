@@ -16,8 +16,7 @@ const Post: React.FC<PostProps> = ({
   imageUrl,
   title,
   id,
-  handleDeletePost,
-  handlePostClick,
+  handleDeletePost
 }) => {
 
   const navigate = useNavigate();

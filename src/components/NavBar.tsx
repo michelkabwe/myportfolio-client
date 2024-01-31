@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import styles from "../styles/NavBar.module.css";
 import { FaUserCircle } from "react-icons/fa";
@@ -14,14 +14,11 @@ interface Auth {
   setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-
-
 const NavBar: React.FC<Auth> = ({ isLoggedIn, setIsLoggedOut, setIsLoggedIn }) => {
 
   const navigate = useNavigate();
 
   const handleAuth = () => {
-    console.log("Logged OUT")
     localStorage.removeItem('isLoggedIn');
     setIsLoggedOut(true);
     setIsLoggedIn(false);
