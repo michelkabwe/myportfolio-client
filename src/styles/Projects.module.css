@@ -91,6 +91,9 @@
   margin-right: 2rem;
   margin-bottom: 3rem;
   padding: 2rem;
+  background: #c2bfca17;
+  border-radius: 10px;
+
   }
 
   .card_col_wrapper:hover {
@@ -155,6 +158,7 @@
   font-size: 20px;
   font-style: normal;
   line-height: normal;
+  cursor: pointer;
   }
 
   .card_p {
@@ -210,8 +214,6 @@
   }
 
   .p_about {
-    font-size: 18px;
-    max-width: 500px;
   }
 
   .social_btn_wrapper {
@@ -255,17 +257,15 @@
   }
   .live_url a:hover,  branch.source_code a:hover {
     text-decoration: none;
-    color:#000000;
+    color:#FCF55F;
+
   }
 
   .live_url:hover, .source_code:hover{
-    background:#FCF55F ;
+    background:#fcf55f1f;
     color: #000000;
     transition: 0.5s;
   }
-
-
-
   /* break points */
   @media screen and (max-width: 1260px) {
 
@@ -344,10 +344,12 @@
 
     .card_col_right {
       width: 100%;
+      padding: 1rem;
     }
 
     .card_img_wrapper {
         width: 100%;
+        margin-top: 2rem;
     }
 
     .card_title {

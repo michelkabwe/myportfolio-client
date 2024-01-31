@@ -5,6 +5,8 @@ import { useCategoriesContext } from "../contexts/usePostProvider/usePostList";
 import LiInLogo from "../assets/LI-In-Bug.png";
 import GitHLogo from "../assets/github-mark.png";
 import he from "he";
+import { MdOutlineArrowOutward } from "react-icons/md";
+
 
 
 const Projects: React.FC = () => {
@@ -138,7 +140,7 @@ const Projects: React.FC = () => {
             <div id="Project" className="project" ref={scrollableRef}>
               <div className={styles.card_container}>
                 {projectCategory.map((item, index) => (
-                  <div key={index} className={styles.card_col_wrapper} style={{ cursor: 'pointer' }}>
+                  <div key={index} className={styles.card_col_wrapper}>
                     <div
                       className={`${styles.card_img_wrapper} ${item.imageUrl
                         ? ""
@@ -155,8 +157,24 @@ const Projects: React.FC = () => {
                       </h5>
                       <div className={styles.text_wrapper}>
                         <p className={styles.card_p}>
-                          {item.content.replace(/<\/?p>/g, "")}
+                          {item.content.length >= 100 ? (
+                            <span>
+                              {item.content.replace(/<\/?p>/g, "")}
+                              <span
+                                style={{ color: '#FCF55F', cursor: 'pointer', display:'block', marginTop:'10px' }}
+                                onClick={() => goToPost(item.id)}
+                              >
+                                Read more <MdOutlineArrowOutward style={{ color: '#ffffff', marginLeft: '3px' }} />
+                              </span>
+                            </span>
+                          ) : (
+                            <span>
+                              {item.content.replace(/<\/?p>/g, "")}
+                            </span>
+                          )}
                         </p>
+
+
                       </div>
                       <div className={styles.links_wrapper}>
 
@@ -177,7 +195,7 @@ const Projects: React.FC = () => {
                 </div>
               </div>
             </div>
-           {/* <h5 className={styles.view_full_resume}>
+            {/* <h5 className={styles.view_full_resume}>
               <a href={pdfUrl} target="_blank" rel="noopener noreferrer">
                 VIEW FULL RESUMÉ
                       </a>
