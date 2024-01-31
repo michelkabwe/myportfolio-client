@@ -85,7 +85,7 @@ const Home: React.FC<HomeComponent> = () => {
         <div className={styles.btn_wrapper_hero}>
           <Link to="Projects">
             <button className={styles.purple_btn}>
-              <p className={styles.btn_p}>READ MORE</p><FaChevronRight />
+              <p className={styles.btn_p}>SEE MY WORK</p><FaChevronRight />
             </button>
           </Link>
         </div>
