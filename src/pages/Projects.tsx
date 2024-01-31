@@ -122,11 +122,11 @@ const Projects: React.FC = () => {
               <div className={styles.card_container}>
                 {aboutCategory.map((item, index) => (
                   <div key={index} className={styles.card_col_wrapper}>
-                    <div className={styles.card_col_right}>
+                    <div className={styles.card_col_right_about}>
                       <h5 className={styles.card_title}>
                         {he.decode(item.title.replace(/–/g, "-"))}
                       </h5>
-                      <div className={styles.text_wrapper}>
+                      <div className={styles.text_wrapper_about}>
                         <p className={styles.p_about}>
                           {item.content.replace(/<\/?p>/g, "")}
                         </p>
@@ -164,7 +164,8 @@ const Projects: React.FC = () => {
                                 style={{ color: '#FCF55F', cursor: 'pointer', display:'block', marginTop:'10px' }}
                                 onClick={() => goToPost(item.id)}
                               >
-                                Read more <MdOutlineArrowOutward style={{ color: '#ffffff', marginLeft: '3px' }} />
+                                Read more <MdOutlineArrowOutward
+                                style={{ color: '#ffffff', marginLeft: '3px' }} />
                               </span>
                             </span>
                           ) : (
