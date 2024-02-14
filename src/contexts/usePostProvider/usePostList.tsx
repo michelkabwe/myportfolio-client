@@ -165,7 +165,7 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
         contentRef,
         selectRef,
         liveUrlRef,
-        sourceCodeRef
+        sourceCodeRef,
     };
 
     return (
