@@ -36,6 +36,9 @@ const Projects: React.FC = () => {
   });
 
 
+
+
+
   const handleScroll = () => {
     const sectionIdsToMonitor = ["about", "project"];
 
@@ -139,7 +142,7 @@ const Projects: React.FC = () => {
 
             <div id="Project" className="project" ref={scrollableRef}>
               <div className={styles.card_container}>
-                {projectCategory.map((item, index) => (
+                { projectCategory.map((item, index) => (
                   <div key={index} className={styles.card_col_wrapper}>
                     <div
                       className={`${styles.card_img_wrapper} ${item.imageUrl
@@ -184,10 +187,10 @@ const Projects: React.FC = () => {
                           <a href={item.liveUrl}>See live</a>
                         </div>
 
-
+                       { item.sourceCode.length ? (
                         <div className={styles.source_code}>
                           <a href={item.sourceCode}>Source code</a>
-                        </div>
+                        </div>) : '' }
                       </div>
                     </div>
                   </div>
