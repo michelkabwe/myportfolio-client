@@ -10,7 +10,6 @@ import { SiFirebase } from "react-icons/si";
 import { BsBootstrapFill } from "react-icons/bs";
 import { FaReact } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
-import { JsxElement } from 'typescript';
 
 
 interface FormData {
@@ -36,7 +35,7 @@ const PostPage: React.FC<TechIcon> = () => {
 
 
 
-  const techIcons: TechIcon[] = [
+  const techIcons: Array<{ value: string; component: JSX.Element}> = [
     { value: 'node', component: <FaNode /> },
     { value: 'javascript', component: <IoLogoJavascript /> },
     { value: 'typescript', component: <SiTypescript /> },
@@ -125,7 +124,7 @@ const PostPage: React.FC<TechIcon> = () => {
         </Form.Control>
 
         <div className={styles.tech_icons} style={{ display: 'flex', fontSize: '1.5rem' }}>
-          {techIcons.map((iconItem:any) => {
+          {techIcons.map((iconItem) => {
             return (
               <div key={iconItem.value} onClick={() => selectIcon(iconItem.value)}>
                 {iconItem.component}
