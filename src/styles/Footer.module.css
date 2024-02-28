@@ -11,6 +11,10 @@
 
   }
 
+  .footer_active_color {
+    background: rgb(53, 11, 222);
+  }
+
   .social_btn_wrapper {
     margin-left: 2rem;
     margin-right: 10rem;

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import styles from "../styles/Footer.module.css";
 import LiInLogo from "../assets/LI-In-Bug.png";
 import GitHLogo from "../assets/github-mark.png";
@@ -7,18 +8,24 @@ import { FaEnvelope } from "react-icons/fa";
 
 
 
+
 const Footer: React.FC = () => {
+  const location = useLocation();
+
   const [showModal, setShowModal] = useState(false);
 
   const linkedinProfile = "https://www.linkedin.com/in/michel-kabwe-6518843b/";
   const githubProfile = "https://github.com/michelkabwe"
+  const isFooter = location.pathname === '/michel.kabwe.netlify.app/Projects';
+
+
 
   const openModal = () => {
       setShowModal(prev => !prev)
   }
 
   return (
-    <footer className={styles.footer}>
+    <footer className={`${styles.footer} ${isFooter ? styles.footer_active_color : null}`}>
       <div className={styles.social_btn_wrapper}>
         <a href={linkedinProfile} target="blank" rel="noopener noreferrer">
         <img
