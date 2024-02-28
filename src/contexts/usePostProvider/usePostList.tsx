@@ -50,6 +50,7 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
         return `http://localhost:3001/api/posts/${id}`
     };
 
+    useEffect(() => {
     const fetchPosts = async () => {
         try {
             const response = await axios.get<Category[]>('http://localhost:3001/api/posts/');
@@ -58,10 +59,6 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
             console.error('Error fetching data:', error);
         }
     };
-
-
-
-    useEffect(() => {
         fetchPosts();
     }, []);
 
