@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
   }
 
   return (
-    <footer className={`${styles.footer}`}  style={{background: isFooter ? styles.footer_active_color : styles.footer}}>
+     <footer className={`${styles.footer}`} style={{ background: isFooter ? styles.footer_active_color : '' }}>
       <div className={styles.social_btn_wrapper}>
         <a href={linkedinProfile} target="blank" rel="noopener noreferrer">
         <img
