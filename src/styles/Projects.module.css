@@ -101,9 +101,9 @@
 
   .card_img_wrapper {
     width: 220px;
-    height: 120px;
     object-fit: cover;
-    height: 179px;
+    min-height: 179px;
+    max-height: 100%;
     overflow: hidden;
     margin-right: 2rem;
     display: flex;

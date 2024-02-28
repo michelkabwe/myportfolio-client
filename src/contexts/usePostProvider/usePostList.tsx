@@ -50,6 +50,7 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
         return `https://myportfolio-backend-ten.vercel.app/api/posts/${id}`
     };
 
+    useEffect(() => {
     const fetchPosts = async () => {
         try {
             const response = await axios.get<Category[]>('https://myportfolio-backend-ten.vercel.app/api/posts/');
@@ -58,10 +59,6 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
             console.error('Error fetching data:', error);
         }
     };
-
-
-
-    useEffect(() => {
         fetchPosts();
     }, []);
 

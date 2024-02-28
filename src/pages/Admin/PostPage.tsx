@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, ReactElement } from 'react'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import styles from '../../styles/PostPage.module.css';
@@ -33,7 +33,9 @@ const PostPage: React.FC<TechIcon> = () => {
 
   const { titleRef, contentRef, selectRef, sourceCodeRef, liveUrlRef, handleSubmitPost, handleFileChange } = useCategoriesContext();
 
-  const techIcons: TechIcon[] = [
+
+
+  const techIcons: Array<{ value: string; component: JSX.Element}> = [
     { value: 'node', component: <FaNode /> },
     { value: 'javascript', component: <IoLogoJavascript /> },
     { value: 'typescript', component: <SiTypescript /> },
@@ -42,6 +44,26 @@ const PostPage: React.FC<TechIcon> = () => {
     { value: 'react', component: <FaReact /> },
     { value: 'github', component: <FaGithub /> },
   ];
+
+  const [selectedIcon, setSelectedIcon] = useState<TechIcon[]>([]);
+
+
+
+  const selectIcon = (icon: any) => {
+    setSelectedIcon(icon);
+    console.log(icon, 'selected icon ');
+
+    const updatedItem = [...selectedIcon, icon];
+
+    setSelectedIcon(updatedItem);
+    console.log(updatedItem,'updated')
+
+    console.log([...updatedItem],'OOOOOO');
+
+
+};
+
+
 
   return (
     <div className={styles.postpage_container}>
@@ -102,6 +124,14 @@ const PostPage: React.FC<TechIcon> = () => {
         </Form.Control>
 
         <div className={styles.tech_icons} style={{ display: 'flex', fontSize: '1.5rem' }}>
+          {techIcons.map((iconItem) => {
+            return (
+              <div key={iconItem.value} onClick={() => selectIcon(iconItem.value)}>
+                {iconItem.component}
+              </div>
+
+            )
+          })}
         </div>
 
         <Button variant="primary" type="submit">
