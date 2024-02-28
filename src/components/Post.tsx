@@ -5,7 +5,6 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import styles from '../styles/Post.module.css';
 
-
 interface Post {
   [x: string]: any;
   title: string;
@@ -23,6 +22,7 @@ const Post: React.FC<Post> = () => {
   const [post, setPost] = useState<Post[]>([]);
 
   const navigate = useNavigate();
+
 
 
   const goToPost = (postId: string) => {
