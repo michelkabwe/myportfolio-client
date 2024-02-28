@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
 
   const linkedinProfile = "https://www.linkedin.com/in/michel-kabwe-6518843b/";
   const githubProfile = "https://github.com/michelkabwe"
-  const isFooter = location.pathname === '/michel.kabwe.netlify.app/Projects';
+  const isFooter = location.pathname === '/michelkabwe.netlify.app/Projects'
 
 
 
