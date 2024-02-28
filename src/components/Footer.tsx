@@ -16,14 +16,14 @@ const Footer: React.FC = () => {
 
   const linkedinProfile = "https://www.linkedin.com/in/michel-kabwe-6518843b/";
   const githubProfile = "https://github.com/michelkabwe"
-  const isFooter = location.pathname === '/Projects';
+  const isProjectsRoute = location.pathname === '/Projects';
 
   const openModal = () => {
       setShowModal(prev => !prev)
   }
 
   return (
-     <footer className={`${styles.footer}`} style={{ background: isFooter ? styles.footer_active_color : '' }}>
+    <footer className={`${styles.footer}`} style={{ background: isProjectsRoute ? 'rgb(53, 11, 222)' : 'transparent' }}>
       <div className={styles.social_btn_wrapper}>
         <a href={linkedinProfile} target="blank" rel="noopener noreferrer">
         <img
