@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useCategoriesContext } from "../contexts/usePostProvider/usePostList";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
@@ -18,7 +17,6 @@ interface Post {
 }
 
 const Post: React.FC<Post> = () => {
-  const { } = useCategoriesContext();
   const { id } = useParams();
   const [post, setPost] = useState<Post[]>([]);
 
@@ -38,7 +36,6 @@ const Post: React.FC<Post> = () => {
         console.error('Error fetching post:', error);
       }
     };
-
     fetchPost();
   }, [id]);
 
