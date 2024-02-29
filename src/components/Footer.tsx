@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import styles from "../styles/Footer.module.css";
 import LiInLogo from "../assets/LI-In-Bug.png";
 import GitHLogo from "../assets/github-mark.png";
