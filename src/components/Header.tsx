@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import styles from "../styles/Header.module.css";
 import NavBar from "./NavBar";
 import NavResponsive from "./NavResponsive";
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useCategoriesContext } from "../contexts/usePostProvider/usePostList";
+import { useNavigate, useLocation, useParams } from 'react-router-dom';
 
 
 
@@ -19,20 +20,25 @@ type Auth = {
 
 
 
+
 const Header: React.FC<Auth> = ({ isLoggedIn, isLoggedOut, setIsLoggedOut, setIsLoggedIn }) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const navigate = useNavigate();
     const location = useLocation();
+    const { postId } = useParams();
+    const { posts } = useCategoriesContext();
 
-
+    const isSinglePost = posts.some(post => location.pathname === `/api/posts/${post.id}`);
     const isProjectsPage = location.pathname === '/Projects';
-    const isSinglePost = location.pathname.startsWith('/api/posts/:id');
 
     return (
         <header
-            className={`${styles.header} ${isProjectsPage ? styles.about : ''}`}
-            style={{ background: isProjectsPage ? '#350bde' : '#000000' }}
-            >
+            className={`${styles.header} `}
+            style={{
+                background: isProjectsPage || isSinglePost ? '#350bde' : '#000000',
+                position: isProjectsPage ? 'absolute' : 'fixed'
+            }}
+        >
             <span className={styles.logo}>
                 {" "}
                 <Link to="/">Michel Kabwe</Link>
