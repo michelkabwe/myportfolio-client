@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom';
 import AdminNav from '../pages/Admin/AdminNav';
 import styles from '../styles/AdminPage.module.css';
 import PostPage from './Admin/PostPage';
@@ -6,11 +7,14 @@ import Dashboard from './Admin/Dashboard';
 
 interface TechIcon {
   component?: React.ReactNode;
+  //handleActiveTab: (event: React.MouseEvent<HTMLButtonElement>) => void;
 
 }
 
 const AdminPage: React.FC<TechIcon> = () => {
-  const [activeTab, setActiveTab] = useState('dashboard')
+  const [activeTab, setActiveTab] = useState('dashboard');
+  const location = useLocation();
+  const navigate = useNavigate();
 
 
 const handleActiveTab = (category:any) => {
