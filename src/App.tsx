@@ -8,6 +8,7 @@ import Projects from './pages/Projects';
 import AdminPage from './pages/AdminPage';
 import LoginPage from './pages/LoginPage';
 import Post from './components/Post';
+import EditPost from './components/EditPost';
 import './App.css'
 
 
@@ -30,8 +31,11 @@ const App: React.FC = () => {
             }} />} />
             <Route path="/Projects" element={<Projects />} />
             <Route path="/AdminPage" element={<AdminPage />} />
+            <Route path="/api/posts/:id/edit" element={<AdminPage />} />
             <Route path="/LoginPage" element={<LoginPage setIsLoggedIn={setIsLoggedIn} />} />
             <Route path="/api/posts/:id" element={<Post title={''} content={''} item={''} id={''} sourceCode={''} liveUrl={''}/>} />
+
+
 
           </Routes>
           <Footer />
