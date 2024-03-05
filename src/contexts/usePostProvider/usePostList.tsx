@@ -12,23 +12,25 @@ interface Category {
     content: string;
     title: string;
     imageUrl: string;
-    urlsRef:string;
-    liveUrl:string;
-    sourceCode:string;
+    urlsRef: string;
+    liveUrl: string;
+    sourceCode: string;
+
 }
 
 interface ContextValue {
     posts: Category[];
     handleDeletePost: (id: number) => void;
     handlePostClick: (id: number) => void;
-    handleUpdatePost: (id: number, updatedData: Partial<Category>) => void;
+    //handleSubmitPostUpdate: (id: number, updatedData: Partial<Category>) => void;
+    handleSubmitPostUpdate: (event: React.FormEvent<HTMLFormElement>, id: string) => Promise<void>;
     handleSubmitPost: (event: React.FormEvent<HTMLFormElement>) => Promise<void>;
     handleFileChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     titleRef: React.MutableRefObject<HTMLInputElement | null>;
     contentRef: React.MutableRefObject<HTMLTextAreaElement | null>;
     selectRef: React.MutableRefObject<HTMLSelectElement | null>;
     liveUrlRef: React.MutableRefObject<HTMLInputElement | null>;
-    sourceCodeRef:React.MutableRefObject<HTMLInputElement | null>;
+    sourceCodeRef: React.MutableRefObject<HTMLInputElement | null>;
 }
 
 
@@ -51,14 +53,14 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
     };
 
     useEffect(() => {
-    const fetchPosts = async () => {
-        try {
-            const response = await axios.get<Category[]>('https://myportfolio-backend-ten.vercel.app/api/posts/');
-            setPosts(response.data);
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-    };
+        const fetchPosts = async () => {
+            try {
+                const response = await axios.get<Category[]>('https://myportfolio-backend-ten.vercel.app/api/posts/');
+                setPosts(response.data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
         fetchPosts();
     }, []);
 
@@ -83,7 +85,6 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
     const handleSubmitPost = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-
         try {
             const formData = new FormData();
             if (selectedFile) {
@@ -102,7 +103,7 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
             const content = contentRef.current?.value || '';
             const selectedCategory = selectRef.current?.value || '';
             const liveUrl = liveUrlRef.current?.value || '';
-            const sourceCode = sourceCodeRef.current?.value ||'';
+            const sourceCode = sourceCodeRef.current?.value || '';
 
             const imageUrl = response.data.imageUrl;
 
@@ -126,19 +127,20 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
 
 
 
-    const handleUpdatePost = async (id: number, updatedData: Partial<Category>) => {
-        try {
-            const response = await axios.put(`https://myportfolio-backend-ten.vercel.app/api/posts/${id}`, updatedData);
-            setPosts(prevPosts =>
-                prevPosts.map(post => (post.id === id ? { ...post, ...updatedData } : post))
-            );
+    /* const handleUpdatePost = async (id: number, updatedData: Partial<Category>) => {
 
-            return response;
-        } catch (error) {
-            console.error('Error updating post:', error);
-            throw error;
-        }
-    };
+         try {
+             const response = await axios.put(`https://myportfolio-backend-ten.vercel.app/api/posts/${id}/edit`, updatedData);
+             setPosts(prevPosts =>
+                 prevPosts.map(post => (post.id === id ? { ...post, ...updatedData } : post))
+             );
+
+             return response;
+         } catch (error) {
+             console.error('Error updating post:', error);
+             throw error;
+         }
+     };*/
 
 
     const handleDeletePost = async (id: number) => {
@@ -151,11 +153,67 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
         }
     };
 
+    const handleSubmitPostUpdate = async (event: React.FormEvent<HTMLFormElement>, id: string): Promise<void> => {
+        event.preventDefault();
+
+        try {
+            const formData = new FormData();
+            if (selectedFile) {
+                formData.append('file', selectedFile);
+                ;
+            }
+
+            const response: any = await axios.put(`https://myportfolio-backend-ten.vercel.app/api/upload/${id}/edit`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+
+            });
+
+            const title = titleRef.current?.value || '';
+            const content = contentRef.current?.value || '';
+            const selectedCategory = selectRef.current?.value || '';
+            const liveUrl = liveUrlRef.current?.value || '';
+            const sourceCode = sourceCodeRef.current?.value || '';
+
+            const imageUrl = response.data.imageUrl;
+            console.log(imageUrl)
+
+            formData.append('title', title);
+            formData.append('content', content);
+            formData.append('selectedCategory', selectedCategory);
+            formData.append('imageUrl', imageUrl);
+            formData.append('liveUrl', liveUrl);
+            formData.append('sourceCode', sourceCode);
+
+
+            const res = await axios.put<FormData>(`https://myportfolio-backend-ten.vercel.app/api/posts/${id}/edit`, {
+                title,
+                content,
+                selectedCategory,
+                imageUrl,
+                liveUrl,
+                sourceCode
+            }, {
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            }
+            )
+            if(res.status === 200){
+                console.log("Succesful !");
+            }
+
+        } catch (error) {
+            console.error('Error', error)
+        }
+    }
+
     const contextValue: ContextValue = {
         posts,
         handleDeletePost,
         handlePostClick,
-        handleUpdatePost,
+        handleSubmitPostUpdate,
         handleSubmitPost,
         handleFileChange,
         titleRef,
