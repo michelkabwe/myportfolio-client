@@ -20,5 +20,47 @@
 }
 
 .tableRow {
-    vertical-align: middle;
+  vertical-align: middle;
+}
+
+/* Edit Post */
+
+.post_edit_Container {
+  background: #ffffff;
+  height: 100vh;
+  width: 100%;
+
+}
+
+.text_edit_Wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10rem;
+  margin-top: 5rem;
+  width: 100%;
+  align-items: center;
+  overflow-y: scroll;
+
+}
+
+.form_edit {
+  width: 100%;
+}
+
+.form_text_area {
+  height: 230px;
+}
+
+.edit_image_File {
+  width: 50%;
+
+}
+
+.edit_link {
+  margin-bottom: 2rem;
+}
+
+.select_category_Wrapper {
+  margin-bottom: 2rem;
 }
