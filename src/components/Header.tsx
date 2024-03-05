@@ -4,7 +4,7 @@ import styles from "../styles/Header.module.css";
 import NavBar from "./NavBar";
 import NavResponsive from "./NavResponsive";
 import { useCategoriesContext } from "../contexts/usePostProvider/usePostList";
-import { useNavigate, useLocation, useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 
 
@@ -23,9 +23,7 @@ type Auth = {
 
 const Header: React.FC<Auth> = ({ isLoggedIn, isLoggedOut, setIsLoggedOut, setIsLoggedIn }) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const navigate = useNavigate();
     const location = useLocation();
-    const { postId } = useParams();
     const { posts } = useCategoriesContext();
 
     const isSinglePost = posts.some(post => location.pathname === `/api/posts/${post.id}`);
