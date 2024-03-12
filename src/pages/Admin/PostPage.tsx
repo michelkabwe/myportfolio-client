@@ -50,17 +50,8 @@ const PostPage: React.FC<TechIcon> = () => {
 
 
   const selectIcon = (icon: any) => {
-    setSelectedIcon(icon);
-    console.log(icon, 'selected icon ');
-
-    const updatedItem = [...selectedIcon, icon];
-
-    setSelectedIcon(updatedItem);
-    console.log(updatedItem,'updated')
-
-    console.log([...updatedItem],'OOOOOO');
-
-
+    const isIconSelected = selectedIcon.filter((selected) => selected.value === icon.value);
+    console.log(isIconSelected);
 };
 
 
