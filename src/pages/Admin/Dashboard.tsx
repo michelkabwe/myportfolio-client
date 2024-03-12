@@ -83,7 +83,7 @@ const Dashboard: React.FC = () => {
                         type="text"
                         ref={titleRef}
                         placeholder="Add post title"
-                        className={styles.form_title_area}
+                        className={styles.form_title_Area}
                         defaultValue={item.title}
                       />
                     </Form.Group>
@@ -100,7 +100,7 @@ const Dashboard: React.FC = () => {
                     </Form.Group>
                     <Form.Group className={styles.file_upload}>
                       <div className={styles.edit_image_Wrapper}>
-                        <img className={styles.edit_image_File} src={item.imageUrl} />
+                        <img className={styles.edit_image_Wrapper} src={item.imageUrl} />
                       </div>
                       <Form.Label>Change image</Form.Label>
                       <Form.Control
