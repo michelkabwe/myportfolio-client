@@ -56,8 +56,8 @@ const Login: React.FC<Auth> = ({ setIsLoggedIn }) => {
                     <Form.Control type="password" placeholder="Password" required ref={passwordRef} />
                 </Form.Group>
 
-                <Button variant="primary" type="submit">
-                    Submit
+                <Button className={styles.sign_in_button}  variant="primary" type="submit">
+                    Sign in
                 </Button>
             </Form>
         </div>
