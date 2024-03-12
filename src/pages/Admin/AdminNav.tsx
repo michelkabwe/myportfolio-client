@@ -8,9 +8,14 @@ interface ActiveTabCategory {
     activeTab:string;
     handleActiveTab:any;
 
+    //handleActiveTab:(event: React.MouseEvent<HTMLButtonElement>) => void;
+
 }
 
 const AdminNav: React.FC<ActiveTabCategory> = ({handleActiveTab, activeTab}) => {
+
+
+
     return (
         <div className={styles.admin_nav_container}>
             <div className={styles.admin_nav_wrapper}>
