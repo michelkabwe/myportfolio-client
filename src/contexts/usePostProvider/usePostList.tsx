@@ -20,6 +20,7 @@ interface Category {
 
 interface ContextValue {
     posts: Category[];
+    fetchPosts: () => Promise<void>;
     handleDeletePost: (id: number) => void;
     handlePostClick: (id: number) => void;
     //handleSubmitPostUpdate: (id: number, updatedData: Partial<Category>) => void;
@@ -52,7 +53,6 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
         return `https://myportfolio-backend-ten.vercel.app/api/posts/${id}`
     };
 
-    useEffect(() => {
         const fetchPosts = async () => {
             try {
                 const response = await axios.get<Category[]>('https://myportfolio-backend-ten.vercel.app/api/posts/');
@@ -61,8 +61,6 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
                 console.error('Error fetching data:', error);
             }
         };
-        fetchPosts();
-    }, []);
 
 
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -210,6 +208,7 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
     }
 
     const contextValue: ContextValue = {
+        fetchPosts,
         posts,
         handleDeletePost,
         handlePostClick,
