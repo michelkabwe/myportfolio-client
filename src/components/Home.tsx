@@ -24,11 +24,16 @@ type HomeComponent = Category & Props
 
 const Home: React.FC<HomeComponent> = () => {
 
-  const { posts } = useCategoriesContext();
+  const { posts, fetchPosts } = useCategoriesContext();
 
     if(posts !== null && posts ! == undefined){
         console.log(posts);
       }
+
+
+    useEffect(() => {
+      fetchPosts();
+  }, []);
 
 
 
@@ -59,7 +64,7 @@ const Home: React.FC<HomeComponent> = () => {
       };
 
       if (!posts || posts.length === 0) {
-        return <div>Loading...</div>; // Or handle the loading state
+        return <div>Loading...</div>;
       }
 
   return (
