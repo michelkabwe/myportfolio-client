@@ -101,6 +101,15 @@
   transition: 0.5s;
 }
 
+.iconColumn:hover {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.iconColumn:active {
+  transform: translateY(2px);
+}
+
 @media (max-width: 900px) {
   .postContainer {
     padding-bottom: 7rem;
