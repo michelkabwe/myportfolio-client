@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useCategoriesContext } from "../../contexts/usePostProvider/usePostList";
 import Form from 'react-bootstrap/Form';
@@ -25,7 +25,7 @@ interface PostItems {
 
 
 const Dashboard: React.FC = () => {
-  const { titleRef, contentRef, selectRef, sourceCodeRef, liveUrlRef, posts, handleDeletePost, handlePostClick, handleSubmitPostUpdate, handleFileChange } = useCategoriesContext();
+  const { titleRef, contentRef, selectRef, sourceCodeRef, liveUrlRef, posts, handleDeletePost, handlePostClick, handleSubmitPostUpdate, handleFileChange, fetchPosts } = useCategoriesContext();
   const navigate = useNavigate();
   const { id: editPostId } = useParams();
   const actualEditPostId: string = editPostId || '';
@@ -33,7 +33,9 @@ const Dashboard: React.FC = () => {
 
   const [displayEditPost, setDisplayEditPost] = useState<boolean>(false);
 
-
+  useEffect(() => {
+    fetchPosts();
+  },[])
 
 
   const handleDisplayEditPost = (id: number) => {
