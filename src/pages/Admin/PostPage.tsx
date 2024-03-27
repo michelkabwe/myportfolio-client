@@ -31,8 +31,7 @@ interface TechIcon {
 
 const PostPage: React.FC<TechIcon> = () => {
 
-  const { titleRef, contentRef, selectRef, sourceCodeRef, liveUrlRef, handleSubmitPost, handleFileChange } = useCategoriesContext();
-
+  const { titleRef, contentRef, selectRef, sourceCodeRef, liveUrlRef, codeLangIconRef, handleSubmitPost, handleFileChange } = useCategoriesContext();
 
 
   const techIcons: Array<{ value: string; component: JSX.Element}> = [
@@ -45,14 +44,24 @@ const PostPage: React.FC<TechIcon> = () => {
     { value: 'github', component: <FaGithub /> },
   ];
 
-  const [selectedIcon, setSelectedIcon] = useState<TechIcon[]>([]);
+  const [selectedIcons, setSelectedIcons] = useState<TechIcon[]>([]);
 
+  const selectIcon = (icon: TechIcon) => {
+    const isSelected = selectedIcons.some(selected => selected.value === icon.component);
+    if (isSelected) {
+      setSelectedIcons(prevIcons => prevIcons.filter(selected => selected.component !== icon.component));
+    } else {
+      setSelectedIcons(prevIcons => [...prevIcons, icon]);
+    }
+  };
 
+  const updateCodeLangIcon = () => {
+    const selectedValues = selectedIcons.map(icon => icon.value).join(', ');
+    if (codeLangIconRef.current) {
+      codeLangIconRef.current.value = selectedValues;
+    }
+  };
 
-  const selectIcon = (icon: any) => {
-    const isIconSelected = selectedIcon.filter((selected) => selected.value === icon.value);
-    console.log(isIconSelected);
-};
 
 
 
@@ -114,18 +123,36 @@ const PostPage: React.FC<TechIcon> = () => {
           <option value="project">project</option>
         </Form.Control>
 
+        <Form.Group className={styles.add_link}>
+          <Form.Label>Add Icon</Form.Label>
+          <Form.Control
+            ref={codeLangIconRef}
+            type='text'
+            placeholder='code'
+          />
+        </Form.Group>
+
         <div className={styles.tech_icons} style={{ display: 'flex', fontSize: '1.5rem' }}>
-          {techIcons.map((iconItem) => {
+          {techIcons.map((icon) => {
             return (
-              <div key={iconItem.value} onClick={() => selectIcon(iconItem.value)}>
-                {iconItem.component}
+              <div key={icon.value} onClick={() => selectIcon(icon)}>
+              {icon.component}
               </div>
 
             )
           })}
         </div>
+        <h2>Selected Icons:</h2>
+        <dl>
+          {selectedIcons.map((icon, index) => (
+            <React.Fragment key={index}>
+              <dt>{icon.value}</dt>
+              <dd>{icon.component}</dd>
+            </React.Fragment>
+          ))}
+        </dl>
 
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" onClick={updateCodeLangIcon}>
           Submit
         </Button>
       </Form>
