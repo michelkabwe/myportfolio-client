@@ -13,6 +13,8 @@ import './App.css'
 
 
 
+
+
 const App: React.FC = () => {
 
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
@@ -29,11 +31,11 @@ const App: React.FC = () => {
             <Route path="/" element={<Home category_id={''} content={''} title={''} post_img={''} showBtn={false} closeForm={function (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void {
               throw new Error('Function not implemented.');
             }} />} />
-            <Route path="/Projects" element={<Projects />} />
+            <Route path="/Projects" element={<Projects id={0} category_id={''} content={''} title={''} imageUrl={''} urlsRef={''} liveUrl={''} sourceCode={''} codeLangIcon={''} />} />
             <Route path="/AdminPage" element={<AdminPage />} />
             <Route path="/api/posts/:id/edit" element={<AdminPage />} />
             <Route path="/LoginPage" element={<LoginPage setIsLoggedIn={setIsLoggedIn} />} />
-            <Route path="/api/posts/:id" element={<Post title={''} content={''} item={''} id={''} sourceCode={''} liveUrl={''}/>} />
+            <Route path="/api/posts/:id" element={<Post title={''} content={''}  id={''} sourceCode={''} liveUrl={''} codeLangIcon={''}/>} />
 
 
 

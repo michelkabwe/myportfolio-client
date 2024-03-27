@@ -101,6 +101,18 @@
   transition: 0.5s;
 }
 
+.iconWrapper{}
+
+.codeLanguageIcons {
+  display: flex;
+  justify-content: flex-start;
+  align-items: 'center';
+}
+
+.codeIcon {
+  margin-right:0.5rem;
+}
+
 @media (max-width: 900px) {
   .postContainer {
     padding-bottom: 7rem;
