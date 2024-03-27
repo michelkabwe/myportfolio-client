@@ -101,12 +101,12 @@
   transition: 0.5s;
 }
 
-.iconWrapper{}
 
 .codeLanguageIcons {
+  flex-wrap: wrap;
   display: flex;
-  justify-content: flex-start;
-  align-items: 'center';
+  align-items: center;
+  margin-top:2rem;
 }
 
 .codeIcon {

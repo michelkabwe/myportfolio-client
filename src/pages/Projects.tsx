@@ -66,37 +66,32 @@ const Projects: React.FC<Category> = () => {
     return post.category_id === 'project'
   });
 
-
-
-  const techIcons: Array<{ value: string; component: JSX.Element }> = [
-    { value: 'node', component: <FaNode /> },
-    { value: 'javascript', component: <IoLogoJavascript /> },
-    { value: 'typescript', component: <SiTypescript /> },
-    { value: 'firebase', component: <SiFirebase /> },
-    { value: 'bootstrap', component: <BsBootstrapFill /> },
-    { value: 'react', component: <FaReact /> },
-    { value: 'github', component: <FaGithub /> },
-  ]
-
   useEffect(() => {
     fetchPosts();
     posts.map((post: any) => {
-    console.log(post.codeLandIcon)
-
-      // Check if codeLangIcon is an array and includes all the desired strings
-
-  });
-
+    });
   }, [])
 
-
-
-
-
-
-
-
-
+  const renderIcon = (icon: string) => {
+    switch (icon) {
+      case 'node':
+        return <FaNode size={30} color="#fcf55f" />;
+      case 'javascript':
+        return <IoLogoJavascript size={30} color="#fcf55f" />;
+      case 'typescript':
+        return <SiTypescript size={26} color="#fcf55f" />;
+      case 'firebase':
+        return <SiFirebase size={30} color="#fcf55f" />;
+      case 'bootstrap':
+        return <BsBootstrapFill size={30} color="#fcf55f" />;
+      case 'react':
+        return <FaReact size={30} color="#fcf55f" />;
+      case 'github':
+        return <FaGithub size={30} color="#fcf55f" />;
+      default:
+        return null;
+    }
+  };
 
   const handleScroll = () => {
     const sectionIdsToMonitor = ["about", "project"];
@@ -249,16 +244,16 @@ const Projects: React.FC<Category> = () => {
                             <a href={item.sourceCode}>Source code</a>
                           </div>) : ''}
                       </div>
-                     {/* <div className={styles.icon_wrapper} style={{height:'100px',background:'beige'}}>
-                        {filterIcons.map((icon, index) =>
-                          <div key={index} style={{ background: 'red' }}>
-                            {icon}
-                          </div>
+
+                          {typeof item.codeLangIcon === 'string' ? (
+                            <div className={styles.codeLanguageIconWrapper}>{(item.codeLangIcon as string).split(',').map((icon:string, index:number) => (
+                              <div key={index} className={styles.codeIcon}>{renderIcon(icon.trim())}</div>
+                            ))}</div>
+                          ) : null}
 
 
-                        )}
 
-                      </div>*/}
+
 
                     </div>
                   </div>
