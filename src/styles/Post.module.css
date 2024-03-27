@@ -75,8 +75,8 @@
   width: 130px;
   padding: 0.5rem;
   border-radius: 11px;
-  cursor: pointer;
   font-size: 16px;
+  cursor: pointer;
   font-weight: 700;
   line-height: 23px;
   border: solid 1px #fcf55f;
@@ -114,6 +114,7 @@
 }
 
 @media (max-width: 900px) {
+
   .postContainer {
     padding-bottom: 7rem;
     padding-left: 1rem;
@@ -151,4 +152,26 @@
   .postImgWrapper {
     flex: 100%;
   }
+
+  .codeLanguageIcons {
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    justify-content: flex-start;
+  }
 }
+
+@media (max-width: 768px) {
+  .source_code,  .live_url {
+  }
+  .postContentWrapper {
+    padding:1rem;
+
+  }
+}
+@media (max-width: 434px) {
+  .source_code,  .live_url {
+    font-size: 4vw;
+  }
+
+}
+
