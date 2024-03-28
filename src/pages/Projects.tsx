@@ -23,7 +23,7 @@ interface Category {
   urlsRef: string;
   liveUrl: string;
   sourceCode: string;
-  codeLangIcon: string;
+  codeLangIcon?: string;
   createdPost?: {
     id: number;
     category_id: string;
@@ -33,7 +33,7 @@ interface Category {
     urlsRef: string;
     liveUrl: string;
     sourceCode: string;
-    codeLangIcon: string[];
+    codeLangIcon: string;
   }
 
 }
@@ -196,7 +196,7 @@ const Projects: React.FC<Category> = () => {
 
             <div id="Project" className="project" ref={scrollableRef}>
               <div className={styles.card_container}>
-                {projectCategory.map((item, index) => (
+                {projectCategory.map((item:any, index:any) => (
                   <div key={index} className={styles.card_col_wrapper}>
                     <div
                       className={`${styles.card_img_wrapper} ${item.imageUrl
@@ -244,6 +244,15 @@ const Projects: React.FC<Category> = () => {
                             <a href={item.sourceCode}>Source code</a>
                           </div>) : ''}
                       </div>
+                      {typeof item.codeLangIcon === 'string' ? (
+                            <div className={styles.codeLanguageIconWrapper}>{(item.codeLangIcon as string).split(',').map((icon:string, index:number) => (
+                              <div key={index} className={styles.codeIcon}>{renderIcon(icon.trim())}</div>
+                            ))}</div>
+                          ) : null}
+
+
+                      {/*
+
 
                           {typeof item.codeLangIcon === 'string' ? (
                             <div className={styles.codeLanguageIconWrapper}>{(item.codeLangIcon as string).split(',').map((icon:string, index:number) => (
@@ -251,6 +260,9 @@ const Projects: React.FC<Category> = () => {
                             ))}</div>
                           ) : null}
 
+
+
+*/ }
 
 
 
