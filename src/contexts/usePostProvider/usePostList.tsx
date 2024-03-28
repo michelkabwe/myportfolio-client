@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState, ReactNode, useRef } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useRef } from 'react';
 import axios from 'axios';
 
 
@@ -15,6 +15,18 @@ interface Category {
     urlsRef: string;
     liveUrl: string;
     sourceCode: string;
+    codeLangIcon?: string[];
+    createdPost?: {
+        id: number;
+        category_id: string;
+        content: string;
+        title: string;
+        imageUrl: string;
+        urlsRef: string;
+        liveUrl: string;
+        sourceCode: string;
+        codeLangIcon?:string[];
+    }
 
 }
 
@@ -23,7 +35,6 @@ interface ContextValue {
     fetchPosts: () => Promise<void>;
     handleDeletePost: (id: number) => void;
     handlePostClick: (id: number) => void;
-    //handleSubmitPostUpdate: (id: number, updatedData: Partial<Category>) => void;
     handleSubmitPostUpdate: (event: React.FormEvent<HTMLFormElement>, id: string) => Promise<void>;
     handleSubmitPost: (event: React.FormEvent<HTMLFormElement>) => Promise<void>;
     handleFileChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -32,6 +43,8 @@ interface ContextValue {
     selectRef: React.MutableRefObject<HTMLSelectElement | null>;
     liveUrlRef: React.MutableRefObject<HTMLInputElement | null>;
     sourceCodeRef: React.MutableRefObject<HTMLInputElement | null>;
+    codeLangIconRef: React.MutableRefObject<HTMLInputElement | null>;
+
 }
 
 
@@ -77,6 +90,7 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
     const selectRef = useRef<HTMLSelectElement>(null);
     const liveUrlRef = useRef<HTMLInputElement>(null);
     const sourceCodeRef = useRef<HTMLInputElement>(null);
+    const codeLangIconRef = useRef<HTMLInputElement>(null);
 
 
 
@@ -102,8 +116,10 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
             const selectedCategory = selectRef.current?.value || '';
             const liveUrl = liveUrlRef.current?.value || '';
             const sourceCode = sourceCodeRef.current?.value || '';
+            const codeLangIcon = codeLangIconRef.current?.value || '';
 
             const imageUrl = response.data.imageUrl;
+
 
             formData.append('title', title);
             formData.append('content', content);
@@ -111,35 +127,23 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
             formData.append('imageUrl', imageUrl);
             formData.append('liveUrl', liveUrl);
             formData.append('sourceCode', sourceCode);
+            formData.append('sourceCode', codeLangIcon);
 
 
-            const res = await axios.post<FormData>('https://myportfolio-backend-ten.vercel.app/api/posts/', {
-                title, content, selectedCategory, imageUrl, liveUrl, sourceCode
+
+            const res = await axios.post<Category>('https://myportfolio-backend-ten.vercel.app/api/posts/', {
+                title, content, selectedCategory, imageUrl, liveUrl, sourceCode, codeLangIcon
 
             })
+
 
         } catch (error) {
             console.error('Error', error)
         }
+
+
+
     }
-
-
-
-    /* const handleUpdatePost = async (id: number, updatedData: Partial<Category>) => {
-
-         try {
-             const response = await axios.put(`https://myportfolio-backend-ten.vercel.app/api/posts/${id}/edit`, updatedData);
-             setPosts(prevPosts =>
-                 prevPosts.map(post => (post.id === id ? { ...post, ...updatedData } : post))
-             );
-
-             return response;
-         } catch (error) {
-             console.error('Error updating post:', error);
-             throw error;
-         }
-     };*/
-
 
     const handleDeletePost = async (id: number) => {
         try {
@@ -175,7 +179,6 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
             const sourceCode = sourceCodeRef.current?.value || '';
 
             const imageUrl = response.data.imageUrl;
-            console.log(imageUrl)
 
             formData.append('title', title);
             formData.append('content', content);
@@ -220,6 +223,7 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
         selectRef,
         liveUrlRef,
         sourceCodeRef,
+        codeLangIconRef
     };
 
     return (
