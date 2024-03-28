@@ -34,7 +34,7 @@
 .postTextContent {
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
   flex: 1;
 }
@@ -102,11 +102,12 @@
 }
 
 
-.codeLanguageIcons {
+.codeLanguageIconWrapper {
   flex-wrap: wrap;
   display: flex;
   align-items: center;
   margin-top:2rem;
+  padding-left: 4rem;
 }
 
 .codeIcon {
@@ -157,6 +158,10 @@
     flex-wrap: wrap;
     margin-top: 3rem;
     justify-content: flex-start;
+  }
+
+  .codeLanguageIconWrapper {
+    padding-left: 0rem;
   }
 }
 
