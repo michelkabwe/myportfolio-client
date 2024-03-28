@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 import Image from 'react-bootstrap/Image';
-import styles from '../styles/Post.module.css';
+import styles from '../../styles/Post.module.css';
 
 
 interface PostProps {

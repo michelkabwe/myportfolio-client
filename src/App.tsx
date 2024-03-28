@@ -7,9 +7,10 @@ import Footer from './components/Footer';
 import Projects from './pages/Projects';
 import AdminPage from './pages/AdminPage';
 import LoginPage from './pages/LoginPage';
-import Post from './components/Post';
-import EditPost from './components/EditPost';
+import Post from './components/Post/Post';
 import './App.css'
+
+
 
 
 
@@ -33,7 +34,7 @@ const App: React.FC = () => {
             <Route path="/AdminPage" element={<AdminPage />} />
             <Route path="/api/posts/:id/edit" element={<AdminPage />} />
             <Route path="/LoginPage" element={<LoginPage setIsLoggedIn={setIsLoggedIn} />} />
-            <Route path="/api/posts/:id" element={<Post title={''} content={''} id={''} sourceCode={''} liveUrl={''} codeLangIcon={''}/>} />
+            <Route path="/api/posts/:id" element={<Post title={''} content={''}  id={''} sourceCode={''} liveUrl={''} codeLangIcon={''}/>} />
 
 
 

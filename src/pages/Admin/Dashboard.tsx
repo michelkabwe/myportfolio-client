@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
 import styles from '../../styles/Dashboard.module.css';
 import Table from 'react-bootstrap/Table';
-import PostList from '../../components/PostList';
+import PostList from '../../components/Post/PostList';
 
 
 interface PostItems {
@@ -26,18 +26,16 @@ interface PostItems {
 
 const Dashboard: React.FC = () => {
   const { titleRef, contentRef, selectRef, sourceCodeRef, liveUrlRef, posts, handleDeletePost, handlePostClick, handleSubmitPostUpdate, handleFileChange, fetchPosts } = useCategoriesContext();
-
   const navigate = useNavigate();
-
   const { id: editPostId } = useParams();
   const actualEditPostId: string = editPostId || '';
 
 
   const [displayEditPost, setDisplayEditPost] = useState<boolean>(false);
-  console.log(displayEditPost
-    )
 
-
+  useEffect(() => {
+    fetchPosts();
+  },[])
 
 
   const handleDisplayEditPost = (id: number) => {
@@ -48,10 +46,6 @@ const Dashboard: React.FC = () => {
   const handleFormSubmitEdit = (event: React.FormEvent<HTMLFormElement>) => {
     handleSubmitPostUpdate(event, actualEditPostId);
   };
-
-  useEffect(() => {
-    fetchPosts();
-  },[])
 
 
   return (
