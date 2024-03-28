@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
 import styles from '../../styles/Dashboard.module.css';
 import Table from 'react-bootstrap/Table';
-import PostList from '../../components/PostList';
+import PostList from '../../components/Post/PostList';
 
 
 interface PostItems {

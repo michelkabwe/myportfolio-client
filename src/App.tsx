@@ -7,8 +7,7 @@ import Footer from './components/Footer';
 import Projects from './pages/Projects';
 import AdminPage from './pages/AdminPage';
 import LoginPage from './pages/LoginPage';
-import Post from './components/Post';
-import EditPost from './components/EditPost';
+import Post from './components/Post/Post';
 import './App.css'
 
 
