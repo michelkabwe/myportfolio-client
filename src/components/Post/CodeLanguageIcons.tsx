@@ -13,6 +13,7 @@ import { FaWordpress } from "react-icons/fa";
 import { SiGooglecloud } from "react-icons/si";
 import { FaHtml5 } from "react-icons/fa";
 import { TbBrandReactNative } from "react-icons/tb";
+import { FaCss3Alt } from "react-icons/fa";
 
 
 interface CodeLanguageIconsProps {
@@ -52,6 +53,8 @@ const CodeLanguageIcons: React.FC<CodeLanguageIconsProps> = ({ codeLangIcon }) =
                 return <FaHtml5 size={30} color="#fcf55f" />
             case 'reactnative':
                 return <TbBrandReactNative size={30} color="#fcf55f" />
+            case 'css':
+                return <FaCss3Alt size={30} color="#fcf55f" />
             default:
                 return null;
         }

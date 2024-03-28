@@ -10,6 +10,14 @@ import { SiFirebase } from "react-icons/si";
 import { BsBootstrapFill } from "react-icons/bs";
 import { FaReact } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
+import { FaWix } from "react-icons/fa";
+import { FaFigma } from "react-icons/fa";
+import { FaWordpress } from "react-icons/fa";
+import { SiGooglecloud } from "react-icons/si";
+import { FaHtml5 } from "react-icons/fa";
+import { TbBrandReactNative } from "react-icons/tb";
+import { FaCss3Alt } from "react-icons/fa";
+
 
 
 interface FormData {
@@ -42,6 +50,13 @@ const PostPage: React.FC<TechIcon> = () => {
     { value: 'bootstrap', component: <BsBootstrapFill /> },
     { value: 'react', component: <FaReact /> },
     { value: 'github', component: <FaGithub /> },
+    { value: 'wix', component: <FaWix /> },
+    { value: 'figma', component: <FaFigma /> },
+    { value: 'wordpress', component: <FaWordpress /> },
+    { value: 'googlecloud', component: <SiGooglecloud /> },
+    { value: 'html', component: <FaHtml5 /> },
+    { value: 'reactnative', component: <TbBrandReactNative /> },
+    { value: 'css', component: <FaCss3Alt /> },
   ];
 
   const [selectedIcons, setSelectedIcons] = useState<TechIcon[]>([]);
