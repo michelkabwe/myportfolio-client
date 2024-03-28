@@ -14,6 +14,8 @@ import { BsBootstrapFill } from "react-icons/bs";
 import { FaReact } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 
+import CodeLanguageIcons from "../components/Post/CodeLanguageIcons";
+
 interface Category {
   id: number;
   category_id: string;
@@ -23,7 +25,7 @@ interface Category {
   urlsRef: string;
   liveUrl: string;
   sourceCode: string;
-  codeLangIcon?: string;
+  codeLangIcon: string;
   createdPost?: {
     id: number;
     category_id: string;
@@ -33,7 +35,7 @@ interface Category {
     urlsRef: string;
     liveUrl: string;
     sourceCode: string;
-    codeLangIcon: string;
+    codeLangIcon: string[];
   }
 
 }
@@ -71,27 +73,6 @@ const Projects: React.FC<Category> = () => {
     posts.map((post: any) => {
     });
   }, [])
-
-  const renderIcon = (icon: string) => {
-    switch (icon) {
-      case 'node':
-        return <FaNode size={30} color="#fcf55f" />;
-      case 'javascript':
-        return <IoLogoJavascript size={30} color="#fcf55f" />;
-      case 'typescript':
-        return <SiTypescript size={26} color="#fcf55f" />;
-      case 'firebase':
-        return <SiFirebase size={30} color="#fcf55f" />;
-      case 'bootstrap':
-        return <BsBootstrapFill size={30} color="#fcf55f" />;
-      case 'react':
-        return <FaReact size={30} color="#fcf55f" />;
-      case 'github':
-        return <FaGithub size={30} color="#fcf55f" />;
-      default:
-        return null;
-    }
-  };
 
   const handleScroll = () => {
     const sectionIdsToMonitor = ["about", "project"];
@@ -196,7 +177,7 @@ const Projects: React.FC<Category> = () => {
 
             <div id="Project" className="project" ref={scrollableRef}>
               <div className={styles.card_container}>
-                {projectCategory.map((item:any, index:any) => (
+                {projectCategory.map((item, index) => (
                   <div key={index} className={styles.card_col_wrapper}>
                     <div
                       className={`${styles.card_img_wrapper} ${item.imageUrl
@@ -244,28 +225,7 @@ const Projects: React.FC<Category> = () => {
                             <a href={item.sourceCode}>Source code</a>
                           </div>) : ''}
                       </div>
-                      {typeof item.codeLangIcon === 'string' ? (
-                            <div className={styles.codeLanguageIconWrapper}>{(item.codeLangIcon as string).split(',').map((icon:string, index:number) => (
-                              <div key={index} className={styles.codeIcon}>{renderIcon(icon.trim())}</div>
-                            ))}</div>
-                          ) : null}
-
-
-                      {/*
-
-
-                          {typeof item.codeLangIcon === 'string' ? (
-                            <div className={styles.codeLanguageIconWrapper}>{(item.codeLangIcon as string).split(',').map((icon:string, index:number) => (
-                              <div key={index} className={styles.codeIcon}>{renderIcon(icon.trim())}</div>
-                            ))}</div>
-                          ) : null}
-
-
-
-*/ }
-
-
-
+                      <CodeLanguageIcons {...item} />
 
                     </div>
                   </div>
