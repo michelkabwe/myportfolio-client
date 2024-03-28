@@ -6,14 +6,45 @@ import LiInLogo from "../assets/LI-In-Bug.png";
 import GitHLogo from "../assets/github-mark.png";
 import he from "he";
 import { MdOutlineArrowOutward } from "react-icons/md";
+import { FaNode } from "react-icons/fa";
+import { IoLogoJavascript } from "react-icons/io5";
+import { SiTypescript } from "react-icons/si";
+import { SiFirebase } from "react-icons/si";
+import { BsBootstrapFill } from "react-icons/bs";
+import { FaReact } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
+
+interface Category {
+  id: number;
+  category_id: string;
+  content: string;
+  title: string;
+  imageUrl: string;
+  urlsRef: string;
+  liveUrl: string;
+  sourceCode: string;
+  codeLangIcon: string;
+  createdPost?: {
+    id: number;
+    category_id: string;
+    content: string;
+    title: string;
+    imageUrl: string;
+    urlsRef: string;
+    liveUrl: string;
+    sourceCode: string;
+    codeLangIcon: string[];
+  }
+
+}
 
 
 
-const Projects: React.FC = () => {
+const Projects: React.FC<Category> = () => {
   const [activeCategory, setActiveCategory] = useState("About");
   const scrollableRef = useRef(null);
 
-  const { posts } = useCategoriesContext();
+  const { posts, fetchPosts } = useCategoriesContext();
   const navigate = useNavigate();
 
   const goToPost = (id: number) => {
@@ -35,9 +66,32 @@ const Projects: React.FC = () => {
     return post.category_id === 'project'
   });
 
+  useEffect(() => {
+    fetchPosts();
+    posts.map((post: any) => {
+    });
+  }, [])
 
-
-
+  const renderIcon = (icon: string) => {
+    switch (icon) {
+      case 'node':
+        return <FaNode size={30} color="#fcf55f" />;
+      case 'javascript':
+        return <IoLogoJavascript size={30} color="#fcf55f" />;
+      case 'typescript':
+        return <SiTypescript size={26} color="#fcf55f" />;
+      case 'firebase':
+        return <SiFirebase size={30} color="#fcf55f" />;
+      case 'bootstrap':
+        return <BsBootstrapFill size={30} color="#fcf55f" />;
+      case 'react':
+        return <FaReact size={30} color="#fcf55f" />;
+      case 'github':
+        return <FaGithub size={30} color="#fcf55f" />;
+      default:
+        return null;
+    }
+  };
 
   const handleScroll = () => {
     const sectionIdsToMonitor = ["about", "project"];
@@ -142,7 +196,7 @@ const Projects: React.FC = () => {
 
             <div id="Project" className="project" ref={scrollableRef}>
               <div className={styles.card_container}>
-                { projectCategory.map((item, index) => (
+                {projectCategory.map((item, index) => (
                   <div key={index} className={styles.card_col_wrapper}>
                     <div
                       className={`${styles.card_img_wrapper} ${item.imageUrl
@@ -164,11 +218,11 @@ const Projects: React.FC = () => {
                             <span>
                               {item.content.replace(/<\/?p>/g, "")}
                               <span
-                                style={{ color: '#FCF55F', cursor: 'pointer', display:'block', marginTop:'10px' }}
+                                style={{ color: '#FCF55F', cursor: 'pointer', display: 'block', marginTop: '10px' }}
                                 onClick={() => goToPost(item.id)}
                               >
                                 Read more <MdOutlineArrowOutward
-                                style={{ color: '#ffffff', marginLeft: '3px' }} />
+                                  style={{ color: '#ffffff', marginLeft: '3px' }} />
                               </span>
                             </span>
                           ) : (
@@ -181,29 +235,31 @@ const Projects: React.FC = () => {
 
                       </div>
                       <div className={styles.links_wrapper}>
-
-
                         <div className={styles.live_url}>
                           <a href={item.liveUrl}>See live</a>
                         </div>
 
-                       { item.sourceCode.length ? (
-                        <div className={styles.source_code}>
-                          <a href={item.sourceCode}>Source code</a>
-                        </div>) : '' }
+                        {item.sourceCode.length ? (
+                          <div className={styles.source_code}>
+                            <a href={item.sourceCode}>Source code</a>
+                          </div>) : ''}
                       </div>
+
+                          {typeof item.codeLangIcon === 'string' ? (
+                            <div className={styles.codeLanguageIconWrapper}>{(item.codeLangIcon as string).split(',').map((icon:string, index:number) => (
+                              <div key={index} className={styles.codeIcon}>{renderIcon(icon.trim())}</div>
+                            ))}</div>
+                          ) : null}
+
+
+
+
+
                     </div>
                   </div>
                 ))}
-                <div className={styles.tech_logos}>
-                </div>
               </div>
             </div>
-            {/* <h5 className={styles.view_full_resume}>
-              <a href={pdfUrl} target="_blank" rel="noopener noreferrer">
-                VIEW FULL RESUMÉ
-                      </a>
-            </h5>*/}
           </div>
         </div>
       </div>
