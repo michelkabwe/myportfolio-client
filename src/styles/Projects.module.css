@@ -107,8 +107,8 @@
     overflow: hidden;
     margin-right: 2rem;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content:flex-start;
+    align-items: flex-start;
 
   }
   .img_wrapper_noBorder {
@@ -391,8 +391,11 @@
     }
 
     .card_img_wrapper {
-        width: 100%;
-        margin-top: 2rem;
+      width: 100%;
+      display: flex;
+      justify-content: center; /* Horizontally center the image */
+      align-items: center; /* Vertically center the image */
+      margin-top: 2rem; /* Adjust margin as needed */
     }
 
     .card_title {
