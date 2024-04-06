@@ -102,7 +102,7 @@ const Dashboard: React.FC = () => {
                     </Form.Group>
                     <Form.Group className={styles.file_upload}>
                       <div className={styles.edit_image_Wrapper}>
-                        <img className={styles.edit_image_Wrapper} src={item.imageUrl} />
+                        <img className={styles.edit_image} src={item.imageUrl} />
                       </div>
                       <Form.Label>Change image</Form.Label>
                       <Form.Control
