@@ -378,7 +378,7 @@
     }
 
     .card_img_wrapper img {
-      width: 75%;
+      /*width: 75%;*/
     }
 
     .menu_wrapper {
@@ -393,9 +393,7 @@
     .card_img_wrapper {
       width: 100%;
       display: flex;
-      justify-content: center; /* Horizontally center the image */
-      align-items: center; /* Vertically center the image */
-      margin-top: 2rem; /* Adjust margin as needed */
+      align-items: flex-start;
     }
 
     .card_title {
