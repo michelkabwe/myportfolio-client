@@ -33,7 +33,7 @@
 }
 
 .text_edit_Wrapper {
-  height: 100vh;
+  height: 100vw;
   display: flex;
   justify-content: center;
   margin-bottom: 10rem;
@@ -42,6 +42,10 @@
   align-items: center;
   overflow-y: scroll;
 
+}
+
+.edit_image {
+  width: 50%;
 }
 
 .form_edit {
