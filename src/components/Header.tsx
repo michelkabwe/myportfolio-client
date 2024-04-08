@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styles from "../styles/Header.module.css";
 import NavBar from "./NavBar";
@@ -24,10 +24,20 @@ type Auth = {
 const Header: React.FC<Auth> = ({ isLoggedIn, isLoggedOut, setIsLoggedOut, setIsLoggedIn }) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const location = useLocation();
-    const { posts } = useCategoriesContext();
+    const { posts, fetchPosts } = useCategoriesContext();
 
-    const isSinglePost = posts.some(post => location.pathname === `/api/posts/${post.id}`);
+    const isSinglePost = useMemo(() => {
+        if (!posts) return false;
+        return posts.some(post => location.pathname === `/api/posts/${post.id}`);
+    }, [posts, location.pathname]);
+
     const isProjectsPage = location.pathname === '/Projects';
+    console.log(isSinglePost,'issisngelpost')
+
+
+  useEffect(() => {
+    fetchPosts();
+  },[])
 
     return (
         <header
@@ -39,7 +49,9 @@ const Header: React.FC<Auth> = ({ isLoggedIn, isLoggedOut, setIsLoggedOut, setIs
         >
             <span className={styles.logo}>
                 {" "}
-                <Link to="/">Michel Kabwe</Link>
+                {!isLoggedIn ? <Link to="/">Michel Kabwe</Link> : (
+                    <Link to="/AdminPage">Dashboard</Link> )
+                }
             </span>
             <NavBar isLoggedIn={isLoggedIn} isLoggedOut={isLoggedOut} setIsLoggedOut={setIsLoggedOut} setIsLoggedIn={setIsLoggedIn} />
             <NavResponsive isOpen={isOpen} setIsOpen={setIsOpen} />
