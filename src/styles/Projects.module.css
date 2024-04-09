@@ -294,11 +294,9 @@
     transition: 0.5s;
   }
 
-  .codeLanguageIconWrapper {
-    flex-wrap: wrap;
-    display: flex;
-    align-items: center;
-    margin-top:2rem;
+
+  .noPaddingLeft {
+    padding-left:0rem;
 
   }
 
