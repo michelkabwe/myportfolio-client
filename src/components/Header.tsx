@@ -32,7 +32,6 @@ const Header: React.FC<Auth> = ({ isLoggedIn, isLoggedOut, setIsLoggedOut, setIs
     }, [posts, location.pathname]);
 
     const isProjectsPage = location.pathname === '/Projects';
-    console.log(isSinglePost,'issisngelpost')
 
 
   useEffect(() => {

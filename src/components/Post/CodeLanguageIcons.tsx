@@ -36,8 +36,6 @@ const CodeLanguageIcons: React.FC<CategoryWithLocation> = ({ codeLangIcon}) => {
 
     const isProjectsPage = location.pathname === '/Projects';
 
-    console.log(isProjectsPage, 'codeLang')
-
     const renderIcon = (lang: string) => {
         switch (lang) {
             case 'node':

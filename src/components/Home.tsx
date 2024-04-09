@@ -26,9 +26,6 @@ const Home: React.FC<HomeComponent> = () => {
 
   const { posts, fetchPosts } = useCategoriesContext();
 
-    if(posts !== null && posts ! == undefined){
-        console.log(posts);
-      }
 
 
     useEffect(() => {
