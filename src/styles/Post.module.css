@@ -110,6 +110,10 @@
   padding-left:4rem;
 }
 
+.codeLanguageIconsProjectPage {
+  padding-left: 0rem !important;
+}
+
 .codeIcon {
   margin-right:0.5rem;
 }

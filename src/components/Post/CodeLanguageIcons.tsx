@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom';
 import styles from '../../styles/Post.module.css';
 import { FaNode } from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io5";
@@ -21,7 +22,21 @@ interface CodeLanguageIconsProps {
 
 }
 
-const CodeLanguageIcons: React.FC<CodeLanguageIconsProps> = ({ codeLangIcon }) => {
+type ProjectLocation = {
+    isProjectsPage?: boolean;
+}
+
+type CategoryWithLocation = CodeLanguageIconsProps & ProjectLocation
+
+
+
+const CodeLanguageIcons: React.FC<CategoryWithLocation> = ({ codeLangIcon}) => {
+
+    const location = useLocation()
+
+    const isProjectsPage = location.pathname === '/Projects';
+
+    console.log(isProjectsPage, 'codeLang')
 
     const renderIcon = (lang: string) => {
         switch (lang) {
@@ -59,15 +74,31 @@ const CodeLanguageIcons: React.FC<CodeLanguageIconsProps> = ({ codeLangIcon }) =
                 return null;
         }
     };
+
+    const [removePadding, setRemovePadding] = useState(false);
+
+
+    useEffect(() => {
+        if (isProjectsPage) {
+            setRemovePadding(true);
+        } else {
+            setRemovePadding(false);
+        }
+    }, [isProjectsPage]);
+
+
+
     return (
-        <div className={styles.codeLanguageWrapper}>
+        <div>
             {typeof codeLangIcon === 'string' ? (
-                            <div className={styles.codeLanguageIconWrapper}>{(codeLangIcon as string).split(',').map((icon:string, index:number) => (
-                              <div key={index} className={styles.codeIcon}>{renderIcon(icon.trim())}</div>
-                            ))}</div>
-                          ) : null}
+                <div  className={`${styles.codeLanguageIconWrapper} ${removePadding && styles.codeLanguageIconsProjectPage }`}>
+                    {(codeLangIcon as string).split(',').map((icon: string, index: number) => (
+                        <div key={index} className={styles.codeIcon}>{renderIcon(icon.trim())}</div>
+                    ))}
+                </div>
+            ) : null}
         </div>
-    )
-}
+    );
+};
 
 export default CodeLanguageIcons
