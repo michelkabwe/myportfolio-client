@@ -6,14 +6,6 @@ import LiInLogo from "../assets/LI-In-Bug.png";
 import GitHLogo from "../assets/github-mark.png";
 import he from "he";
 import { MdOutlineArrowOutward } from "react-icons/md";
-import { FaNode } from "react-icons/fa";
-import { IoLogoJavascript } from "react-icons/io5";
-import { SiTypescript } from "react-icons/si";
-import { SiFirebase } from "react-icons/si";
-import { BsBootstrapFill } from "react-icons/bs";
-import { FaReact } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
-
 import CodeLanguageIcons from "../components/Post/CodeLanguageIcons";
 
 interface Category {
@@ -36,7 +28,7 @@ interface Category {
     liveUrl: string;
     sourceCode: string;
     codeLangIcon: string[];
-  }
+  },
 
 }
 
@@ -49,14 +41,11 @@ const Projects: React.FC<Category> = () => {
   const { posts, fetchPosts } = useCategoriesContext();
   const navigate = useNavigate();
 
+
   const goToPost = (id: number) => {
     navigate(`/api/posts/${id}`);
 
   }
-
-  //To display pdf
-  /*const pdfUrl =
-    "https://kabwedev.files.wordpress.com/2023/08/michel-kabwe-cv-.pdf";*/
 
   /* Find specific categories */
   const aboutCategory = posts.filter((post) => {
@@ -107,6 +96,7 @@ const Projects: React.FC<Category> = () => {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
+
 
   return (
     <div className={styles.portfolio_wrapper}
