@@ -48,7 +48,7 @@ const NavResponsive: React.FC<Props> = ({ isOpen, setIsOpen }) => {
               </Link>
             </li>
             <li className={styles.mobile_nav_li}>
-              <Link to="/projects" onClick={closeNav}>
+              <Link to="/Projects" onClick={closeNav}>
                 PROJECTS
               </Link>
             </li>
