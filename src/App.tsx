@@ -8,6 +8,7 @@ import Projects from './pages/Projects';
 import AdminPage from './pages/AdminPage';
 import LoginPage from './pages/LoginPage';
 import Post from './components/Post/Post';
+import StarCluster from './components/StarCluster';
 import './App.css'
 
 
@@ -24,6 +25,7 @@ const App: React.FC = () => {
     <CategoriesProvider>
       <BrowserRouter>
         <div className="App">
+          <StarCluster />
           <Header isLoggedIn={isLoggedIn} isLoggedOut={isLoggedOut} setIsLoggedOut={setIsLoggedOut} setIsLoggedIn={setIsLoggedIn} />
 
           <Routes>
