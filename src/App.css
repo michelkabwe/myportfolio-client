@@ -27,7 +27,7 @@ body {
 .App {
   min-height: 100vh;
   width: 100%;
-  background: #350bde;
+  background: #000000;
   position: relative;
   overflow: hidden;
 }
