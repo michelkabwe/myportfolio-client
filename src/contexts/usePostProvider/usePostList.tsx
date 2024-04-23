@@ -84,7 +84,7 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
             }
         };
 
-        const fetchSingelPost = async (postId: any) => {
+        const fetchSingelPost = async (postId: number) => {
             try {
               const response = await axios.get(`https://myportfolio-backend-ten.vercel.app/api/posts/${postId}`);
               setSingelPost([response.data]);

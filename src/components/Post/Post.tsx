@@ -47,7 +47,7 @@ const Post: React.FC<SingelPostProps> = () => {
                 {item.imageUrl && <img src={item.imageUrl} alt="Post" className={styles.postImage} />}
               </div>
               <div className={styles.postTextContent}>
-                <div className={styles.postTitleWrapper}>
+                <div className={styles.postTitleWrapper}>it
                   <h1 className={styles.postTitle}>{item.title}</h1>
                 </div>
                 <p className={styles.postContentP}>{item.content}</p>
