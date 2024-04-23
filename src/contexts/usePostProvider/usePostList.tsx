@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, ReactNode, useRef } from 'react';
 import axios from 'axios';
+import Post from '../../components/Post/PostList';
 
 
 interface CategoriesProviderProps {
@@ -30,9 +31,12 @@ interface Category {
 
 }
 
+
 interface ContextValue {
     posts: Category[];
+    singelPost: Category[];
     fetchPosts: () => Promise<void>;
+    fetchSingelPost: any;
     handleDeletePost: (id: number) => void;
     handlePostClick: (id: number) => void;
     handleSubmitPostUpdate: (event: React.FormEvent<HTMLFormElement>, id: string) => Promise<void>;
@@ -61,6 +65,11 @@ export const useCategoriesContext = (): ContextValue => {
 
 export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children }) => {
     const [posts, setPosts] = useState<Category[]>([]);
+    const [selectedFile, setSelectedFile] = useState<File | null>(null);
+
+
+    const [singelPost, setSingelPost] = useState<Category[]>([]);
+
 
     const handlePostClick = (id: number) => {
         return `https://myportfolio-backend-ten.vercel.app/api/posts/${id}`
@@ -75,8 +84,16 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
             }
         };
 
+        const fetchSingelPost = async (postId: any) => {
+            try {
+              const response = await axios.get(`https://myportfolio-backend-ten.vercel.app/api/posts/${postId}`);
+              setSingelPost([response.data]);
+            } catch (error) {
+              console.error('Error fetching post:', error);
+            }
+          };
 
-    const [selectedFile, setSelectedFile] = useState<File | null>(null);
+
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
@@ -212,7 +229,9 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
 
     const contextValue: ContextValue = {
         fetchPosts,
+        fetchSingelPost,
         posts,
+        singelPost,
         handleDeletePost,
         handlePostClick,
         handleSubmitPostUpdate,

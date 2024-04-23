@@ -21,6 +21,7 @@ const App: React.FC = () => {
   const [isLoggedOut, setIsLoggedOut] = useState<boolean>(false);
 
 
+
   return (
     <CategoriesProvider>
       <BrowserRouter>
@@ -36,9 +37,7 @@ const App: React.FC = () => {
             <Route path="/AdminPage" element={<AdminPage />} />
             <Route path="/api/posts/:id/edit" element={<AdminPage />} />
             <Route path="/LoginPage" element={<LoginPage setIsLoggedIn={setIsLoggedIn} />} />
-            <Route path="/api/posts/:id" element={<Post title={''} content={''}  id={''} sourceCode={''} liveUrl={''} codeLangIcon={''}/>} />
-
-
+            <Route path="/api/posts/:id" element={<Post title={''} content={''} id={null} sourceCode={''} liveUrl={''} codeLangIcon={['']} postId={null} category_id={''} imageUrl={''} urlsRef={''} />} />
 
           </Routes>
           <Footer />

@@ -3,34 +3,39 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import styles from '../../styles/Post.module.css';
 import CodeLanguageIcons from './CodeLanguageIcons';
+import { useCategoriesContext } from '../../contexts/usePostProvider/usePostList';
 
 
 
 interface Post {
-  title: string;
+  id: number | null;
+  category_id: string;
   content: string;
-  imageUrl?: string;
-  codeLangIcon: string;
-  id: string;
-  sourceCode: string;
+  title: string;
+  imageUrl: string;
+  urlsRef: string;
   liveUrl: string;
+  sourceCode: string;
+  codeLangIcon?: string[] | undefined;
 }
 
-const Post: React.FC<Post> = () => {
+interface PostProps {
+  postId: number | null;
+}
+
+type SingelPostProps  = Post & PostProps
+
+const Post: React.FC<SingelPostProps> = () => {
+  const { fetchSingelPost, singelPost } = useCategoriesContext();
   const { id: postId } = useParams();
-  const [post, setPost] = useState<Post[]>([]);
+
+  const post = singelPost;
 
   useEffect(() => {
-    const fetchPost = async () => {
-      try {
-        const response = await axios.get(`https://myportfolio-backend-ten.vercel.app/api/posts/${postId}`);
-        setPost([response.data]);
-      } catch (error) {
-        console.error('Error fetching post:', error);
-      }
-    };
-    fetchPost();
-  }, [postId]);
+    fetchSingelPost(postId)
+  },[])
+
+
 
   return (
     <>
@@ -55,8 +60,8 @@ const Post: React.FC<Post> = () => {
                   </div>
                 </div>
                 <div className={styles.codeLanguageWrapper}>
-                <CodeLanguageIcons {...item}/>
-              </div>
+                  <CodeLanguageIcons {...item} />
+                </div>
               </div>
 
             </div>
