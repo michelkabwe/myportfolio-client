@@ -77,9 +77,9 @@ const Home: React.FC<HomeComponent> = () => {
       <div className={styles.col_text}>
         {heroCategory.map((item, index) =>
           <div key={index}>
-            <h1 className={`${styles.home_title} ${styles.slideInLeft} ${styles.onHoverEffect}`}> {he.decode(item.title.replace(/–/g, "-"))}</h1>
+            <h1 className={`${styles.home_title}`}> {he.decode(item.title.replace(/–/g, "-"))}</h1>
             <p
-          className={`${styles.p_home} ${styles.slideInLeft}`}
+          className={`${styles.p_home} `}
           dangerouslySetInnerHTML={{ __html: item.content.replace(/&#[^\s]*;|<\/?p>/g, '') }}
         />
           </div>
