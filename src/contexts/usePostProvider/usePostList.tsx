@@ -68,7 +68,7 @@ export const CategoriesProvider: React.FC<CategoriesProviderProps> = ({ children
 
         const fetchPosts = async () => {
             try {
-                const response = await axios.get<Category[]>('https://myportfolio-backend-ten.vercel.app/api/posts/');
+                const response = await axios.get<Category[]>('http://localhost:3001/api/posts/');
                 setPosts(response.data);
             } catch (error) {
                 console.error('Error fetching data:', error);
