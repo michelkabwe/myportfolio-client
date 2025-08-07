@@ -25,18 +25,23 @@ type HomeComponent = Category & Props
 const Home: React.FC<HomeComponent> = () => {
 
   const { posts, fetchPosts } = useCategoriesContext();
-
-
+const [isFetched, setIsFetched] = useState(false); // Track if posts are fetched
 
     useEffect(() => {
-      fetchPosts();
-  }, []);
+        fetchPosts(); // Fetch posts after the component is mounted
+        setIsFetched(true); // Mark that fetching has completed
+    }, []); // Empty dependency array ensures this runs only once after initial render
 
 
 
     const heroCategory = posts.filter((post) => {
       return post.category_id  === 'hero';
     })
+
+      if (!isFetched) {
+        return <div>Loading...</div>; // Loading state
+    }
+
 
       const numStars = 100; // Number of stars you want
 
